@@ -1,0 +1,13 @@
+#LoadModule rewrite_module modules/mod_rewrite.so
+RewriteEngine On
+
+
+#RewriteRule ^/cab/$ cab.php
+#RewriteRule ^/user_money/$ user_money.php
+#RewriteRule ^chat/ind/.*$ index.php
+RewriteRule ^login/$ login.php
+RewriteRule ^((?!(images|css|chat|js|user_images|login)).*)/$ index.php
+
+
+###Перенаправления для статического контента:
+#RewriteRule ^.*/css/(.*)$ css/$0
