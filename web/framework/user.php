@@ -55,7 +55,7 @@ class EUserException extends Exception {
  	public function __construct($database,$session,&$options) {
  	  $this->database=$database;
  	  $this->session=$session;
- 	  $this->users_table=$options['prefix'].'users';
+ 	  $this->users_table=$options['prefix'].'user';
 	}
  	
     /*

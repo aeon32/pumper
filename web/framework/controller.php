@@ -49,7 +49,7 @@ class ControllersManager {
      public function __construct (CSite $site, $options) {
 	 	$this->site = $site;
 	 	$this->database = $site->getDBDriver();
-	 	$this->controllers_table=$options['prefix'].'controllers';
+	 	$this->controllers_table=$options['prefix'].'controller';
 	 	$this->controllers=array();
 	 }
 	 
