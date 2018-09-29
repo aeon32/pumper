@@ -4,4 +4,4 @@ currentdir=$(cd `dirname $0` && pwd)
 
 url="http://localhost/wifi/controller/"
 
-python "$currentdir/pump_test.py" -u "http://localhost/wifi/controller/"
+python3 "$currentdir/pump_test.py" -u "http://localhost/pump/controller/"

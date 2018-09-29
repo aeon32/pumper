@@ -2,12 +2,14 @@
 import socket
 
 import time
-import enum
+
 import heapq
+import controller_emul.enum
+import controller_emul.config
 
 #класс, хранящий задание
 class Job:
-    JOB_STATE = enum.enum( JOB_ADDED =1,        #команда добавлена
+    JOB_STATE = controller_emul.enum.enum( JOB_ADDED =1,        #команда добавлена
                            JOB_PROCESS=2,       #команда в работе
                            JOB_TO_DELETE =3     #команда приговорена к удалению
                         )
@@ -39,6 +41,7 @@ class QueueDispatcher(object):
     def __init__ (self):
         self.nextTryTime= 0
         self.job_queue = [] #очередь заданий
+        self.running = True
     
     def is_time_over(self, currentTime):
         nextQueueProcessTime = self.nextTryTime if len(self.job_queue) == 0 else self.job_queue[0][0]    
@@ -71,7 +74,7 @@ class QueueDispatcher(object):
         heapq.heappush(self.job_queue,(job.getNextTryStamp(), job))
 
     def run(self, idleFunction = None):
-        while True:
+        while self.running:
             if callable(idleFunction):
                 idleFunction()
             currentTime = time.time()
@@ -84,6 +87,14 @@ class QueueDispatcher(object):
                 time.sleep(pause)
                 currentTime = time.time()
                 self.iterate(currentTime)
+
+    def queue_size(self):
+        return len(self.job_queue)
+
+    def terminate(self):
+        self.running = False
+
+
 
 
             

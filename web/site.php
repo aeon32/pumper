@@ -7,7 +7,6 @@ require_once("framework/session.php");
 require_once("framework/user.php");
 
 
-
 class CSite
 {
     static private $instance = NULL;     //Ссылка на единственный экземпляр класса CSite
@@ -29,6 +28,7 @@ class CSite
     public $full_url = NULL;             //полный url к скрипту (например, wifi/kamera1/)
     private $controllers_manager = NULL;
     private $installMode = false;
+    private $contentname = NULL;
 
     public $ierar_link = false;          //использовалась иерархическая ссылка при заходе на сайт
 
@@ -97,6 +97,12 @@ class CSite
     {
         $this->prefix = $prefix;
         $this->options = (array)(new CConfig);   //получили массив свойств
+        if ($this->options["debug"])
+        {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL ^ E_NOTICE);
+        };
+
         if ($this->options["database"]) {       //типа если всё проинсталировано...
             $this->gen_ierar_links = $this->options['use_ierar_links'];
             $this->database = new CMySQLDriver($this->options);
@@ -364,32 +370,36 @@ class CSite
         return $this->controllers_manager;
     }
 
-};
+}
+
+;
 
 /**
- *Функция startApplication создаёт единственный экземпляр объекта CSite и выводит ошибку в случае неудачи 
- *@return  CSite instance
+ *Функция startApplication создаёт единственный экземпляр объекта CSite и выводит ошибку в случае неудачи
+ * @return  CSite instance
  */
-function startApplication($prefix) {
- try {
- 	// @set_magic_quotes_runtime(0);       //Вырубаем нафиг
- 	 $site=CSite::getInstance($prefix);        //Получили ссылку на
-     return $site; 
+function startApplication($prefix)
+{
+    try {
+        // @set_magic_quotes_runtime(0);       //Вырубаем нафиг
+        $site = CSite::getInstance($prefix);        //Получили ссылку на
+        return $site;
     } catch (Exception $exc) {         //Если произошла ошибка создания ключевых объектов 
-?>     
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-   <html xmlns="http://www.w3.org/1999/xhtml">
-   <head>
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   </head>
-   <body>
-      Произошла фатальная ошибка на стороне сервера <br/>
-<?php 
-        print ($exc);  
-?>           
-   </body>
-<?php
-      die();     
+        ?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+    <body>
+    Произошла фатальная ошибка на стороне сервера <br/>
+    <?php
+    print ($exc);
+    ?>
+    </body>
+        <?php
+        die();
     };
 }
 

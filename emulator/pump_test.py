@@ -15,10 +15,23 @@ import controller_emul.pump_protocol
 import controller_emul.queuedispatcher
 import controller_emul.enum
 import controller_emul.config
+import controller_emul.pump_jobs
 
 ##s
 
 def test1(queueDispatcher, pumpProtocol):
+
+    registerJob = controller_emul.pump_jobs.RegisterControllerJob(pumpProtocol)
+
+    queueDispatcher.push_job(registerJob)
+
+    def terminateEmptyRunner():
+        if queueDispatcher.queue_size() == 0:
+            queueDispatcher.terminate()
+
+    queueDispatcher.run( terminateEmptyRunner)
+
+
     pass
 
        
@@ -51,6 +64,7 @@ def main(argv):
 
         queueDispatcher = controller_emul.queuedispatcher.QueueDispatcher()
         pumpProtocol = controller_emul.pump_protocol.PumpProtocol(url)
+        test1(queueDispatcher, pumpProtocol)
 
 
 

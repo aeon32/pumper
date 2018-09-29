@@ -35,10 +35,10 @@ class CSession {
 		*/
 		HTTP_Session2::useCookies(true);
 		HTTP_Session2::useTransSID(false);
-		HTTP_Session2::start("WifiRailwayStation");
+		HTTP_Session2::start($options["session_name"]);
 		if (HTTP_Session2::isIdle() ) {
 			HTTP_Session2::destroy();
-			HTTP_Session2::start("WifiRailwayStation");
+			HTTP_Session2::start($options["session_name"]);
 		};
 		
 		//HTTP_Session2::setExpire(time() + $options["session_expire"]*60);
