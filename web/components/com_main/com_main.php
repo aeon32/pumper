@@ -11,7 +11,7 @@
    	 }
    	 
    	 public function getTitle() {
-   	 	return "Стартовая страница";
+   	 	return "Управление продувкой";
    	 }
    	 
    	/**
@@ -19,7 +19,7 @@
   	 * @return  string заголовок страницы
   	 */
   	public function getKeyWords() {
-   	 	return "Wifi";	
+   	 	return "Управление продувкой";
   	}
   	
    /**

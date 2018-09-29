@@ -4,6 +4,8 @@ require_once("framework/mysqldb.php");
 require_once("framework/session.php");
 require_once("framework/user.php");
 require_once("framework/pumpprotocol.php");
+require_once("framework/pumpcommandengine.php");
+require_once("framework/testcommandengine.php");
 
 class ControlServerException extends Exception {
     protected $message="";
@@ -33,6 +35,7 @@ class ControlServer
     public $get_parameters = NULL;       //параметры, передаваемые методом get (за исключением параметров, передаваемых по ссылке)
     private $controllers_manager = NULL;
     private $pump_command_engine = NULL;    //обработчик команд
+    private $testing_pump_command_engine = NULL;
     private $testing = false;
     private $test_mode = NULL;
 
@@ -76,8 +79,18 @@ class ControlServer
         if ($this->options["database"]) {       //типа если всё проинсталировано...
             $this->gen_ierar_links = $this->options['use_ierar_links'];
             $this->database = new CMySQLDriver($this->options);
-            //$this->pump_command_engine = new Pu
+
+
+            //process url
             $this->urlDispatcher();
+            if ($this->options["debug"] && is_string($this->test_mode))
+            { //in testing mode we use testcommandengine
+                $this->testing_pump_command_engine  = new TestCommandEngine($this->database, $this->test_mode);
+            };
+
+            $this->pump_command_engine = new PumpCommandEngine($this->database);
+
+
         } else {
             //$this->install();
             //TODO : error
@@ -97,8 +110,27 @@ class ControlServer
 
 
     /**
-     * Функция разбирает $_POST и $_GET переменные и осуществляет некоторые первичные действия
-     * (логирования пользователя и т.д)
+     *  function handles incoming request from controller, do commands
+     *  Returns one of PumpMessageBase child class instance
+     */
+    private function _handleRequest($parsedRequest)
+    {
+        if ($this->options["debug"] && is_string($this->test_mode))
+        {
+            $res = $this->testing_pump_command_engine->processCommand($parsedRequest);
+        } else
+        {
+            $res = $this->pump_command_engine->processCommand($parsedRequest);
+        };
+
+
+        return $res;
+
+    }
+
+
+    /**
+     *
      */
     public function run()
     {
@@ -106,28 +138,18 @@ class ControlServer
 
 
         $decoded = $_SERVER['QUERY_STRING'];
-        $decoded = urldecode($decoded);
-        $res = NULL;
+        $decoded = base64_decode($decoded);
+        $output = NULL;
 
-        if ($this->options["debug"] && is_string($this->test_mode) )
-        {
-            switch ($this->test_mode)
-            {
-                case "echo":
-                    $res = pumpProtocolEchoTest($decoded);
+        $parsedRequest = pumpProtocolMessageFromBytes($decoded);
+        if (!is_null($parsedRequest))
+            $output = $this->_handleRequest($parsedRequest);
 
-                    break;
-            }
 
-        } else
-            $res = pumpProtocolMessageFromBytes($decoded);
-
-        $l = strlen($res);
-
-        if (is_string($res)) {
-            header('Content-Type:application/octet-stream');
-            header('Content-Length:' . $l);
-            print ($res);
+        if (is_string($output)) {
+            //header('Content-Type:application/octet-stream');
+            //header('Content-Length:' . strlen($output));
+            print ($output);
         }
         else
             http_response_code(500);

@@ -9,6 +9,7 @@ import logging
 import copy
 import socket
 import struct
+import base64
 import http.client
 import urllib.parse
 import controller_emul.config
@@ -28,21 +29,10 @@ class PumpProtocol (object) :
         pass
 
 
-    def send_command_request(self, msgType, token, data):
-
-        message = bytearray()
-        message += struct.pack('B',msgType)
-
-        if len(token):
-            message += struct.pack("!B", len(token))
-            message += token
+    def send_command_request(self, message):
 
 
-        if len(data):
-            message += struct.pack("!Hs", len(data))
-            message += data
-
-        path = self.urlParsed.path + "?" + urllib.parse.quote_from_bytes(message)
+        path = self.urlParsed.path + "?" + base64.b64encode(message).decode('latin-1')
 
         res = None
 
@@ -55,7 +45,7 @@ class PumpProtocol (object) :
 
             if response.status != 204:
                 res = response.read()
-            controller_emul.LOGGER.debug("Send command %s, type %d, return code %d  response %s", path, msgType, response.status, res)
+            controller_emul.LOGGER.debug("Send command %s,  return code %d  response %s", path, response.status, res)
         finally:
             conn.close()
 
@@ -65,7 +55,13 @@ class PumpProtocol (object) :
 
 
     def send_check_command_request(self, token):
-        return self.send_command_request(self.MESSAGE_TYPE.PUMP_COMMAND_CHECK, token, bytes())
+        message = bytearray()
+        message += struct.pack('B', self.MESSAGE_TYPE.PUMP_COMMAND_CHECK)
+
+        if len(token):
+            message += token
+
+        return self.send_command_request(message)
 
 
 

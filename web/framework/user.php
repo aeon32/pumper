@@ -117,7 +117,7 @@ class CUser
     {
         $user_id = (int)$this->getUserId();
         $users = $this->users_table;
-        $query = $this->database->exec("SELECT user_id,login FROM $users WHERE user_id=$user_id");
+        $query = $this->database->exec("SELECT id,login FROM $users WHERE id=$user_id");
         if ($query->num_rows()) {    //если пользователь нашёлся
             $this->userinfo = $query->getRowAssoc();
             $this->session->set('cr_user_authorized_status', self::AUTHORIZED);
@@ -151,7 +151,7 @@ class CUser
         $users = $this->users_table;
         $this->database->simpleExec("LOCK TABLES $users WRITE");
         $query = $this->database->exec("DELETE FROM $users");
-        $query = $this->database->exec("INSERT INTO $users (user_id,login,password) VALUES (1,'$nick','$md5')");
+        $query = $this->database->exec("INSERT INTO $users (id,login,password) VALUES (0,'$nick','$md5')");
         $this->database->simpleExec("UNLOCK TABLES");
 
 
@@ -198,10 +198,10 @@ class CUser
 
         $users = $this->users_table;
         $this->database->simpleExec("LOCK TABLES $users WRITE");
-        $query = $this->database->exec("SELECT user_id FROM $users WHERE user_id=$user_id AND password='$old_md5' ");
+        $query = $this->database->exec("SELECT id FROM $users WHERE id=$user_id AND password='$old_md5' ");
         if ($query->num_rows()) {
             $nick = $this->database->escapeString($new_nick);
-            $query1 = $this->database->exec("UPDATE $users SET login='$nick',password='$new_md5' WHERE user_id=$user_id");
+            $query1 = $this->database->exec("UPDATE $users SET login='$nick',password='$new_md5' WHERE id=$user_id");
         } else {
             $error_flag = EUserException::USER_NOT_FOUND;
 
@@ -231,7 +231,7 @@ class CUser
 
         $users = $this->users_table;
         $this->database->simpleExec("LOCK TABLES $users READ");
-        $query = $this->database->exec("SELECT user_id,login FROM $users WHERE login='$nick' AND password='$md5' ");
+        $query = $this->database->exec("SELECT id,login FROM $users WHERE login='$nick' AND password='$md5' ");
         $this->database->simpleExec("UNLOCK TABLES");
 
 

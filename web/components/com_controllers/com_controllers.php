@@ -21,7 +21,7 @@
 
    	 
    	 public function getTitle() {
-   	 	return "Стартовая страница";
+   	 	return "Управление продувкой";
    	 }
    	 
    	/**
@@ -29,7 +29,7 @@
   	 * @return  string заголовок страницы
   	 */
   	public function getKeyWords() {
-   	 	return "Wifi";	
+   	 	return "Управление продувкой";
   	}
   	
    /**
@@ -49,7 +49,7 @@
 		?>
 <div class="content">	
   <div class="header_div">
-    <h1>Cхемы расположения</h1>
+    <h1>Контроллеры</h1>
     <form name="adminForm" method="post" action="#">
 	<input  id="accept_but" type="button" value="Добавить" />
 	<input  id="recycle_but" type="button" value="Удалить" />
@@ -63,8 +63,9 @@
 	<tr>
 		<th class="td_small">#</th>
 		<th class="td_small">&nbsp;</th>
-		<th>Название</th>
-		<th>Количество wifi-станций</th>
+		<th class="td_big">Название</th>
+        <th class="td_small"></th>
+
 	</tr>
 <?php 
 	$i = 1;
@@ -72,12 +73,14 @@
 	$polos=false;
     foreach ($controllers as &$value) {
 	    $class=$polos? ' class="polos_tr" ':NULL;
+	    $image = $value->session ? "images/on.png" : "images/off.png";
 	    print("
 	       <tr $class>
 	        <td class=\"td_small\">$i</td>
 			<td class=\"td_small\"><input type=\"checkbox\" id=\"a$value->id\"  name=\"selected$value->id\" /></td>
 			<td class=\"td_big\"><a href=\"scheme_edit/$value->id/\">".htmlspecialchars($value->name)."</a></td>
-			<td class=\"td_big\">".$value->wifi_num."</td>
+			<td class=\"td_small\"><img src=\"$image\" /></td>
+			
 		</tr>");
 		$polos=!$polos;
 		$i++;

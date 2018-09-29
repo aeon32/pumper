@@ -8,22 +8,21 @@
 
 abstract class PumpMessageConsts
 {
-    public static $PUMP_COMMAND_CHECK = 0x30;
+    public static $COMMAND_CHECK_REQUEST = 0x30;
+    public static $NO_COMMAND_RESPONSE = 0x31;
 
 
 }
 
 
 
-abstract class PumpMessageBase
+class PumpMessageBase
 {
     protected $type;
-    protected $token;
 
-    public function __construct($type, $token)
+    public function __construct($type)
     {
         $this->type = $type;
-        $this->token = $token;
     }
 
     public function getType()
@@ -31,19 +30,49 @@ abstract class PumpMessageBase
         return $this->type;
     }
 
-    public function getToken()
+    public function serialize()
     {
-        return $this->token;
+        return chr($this->type);
+
     }
+
+
 };
 
+/**
+ *  Request to controlserver to retrieve pending command for execution
+ *  Format:
+ *  struct PumpCommandCheckRequest
+ *  {
+ *    uint8_t messageType; //one of PumpMessageCodes
+ *    char tokenSize;      //tokenSize
+**/
 
 class PumpCommandCheckRequest extends  PumpMessageBase
 {
-    public function __construct ($type, $token)
-    {
-        parent::__construct($type, $token);
+    private static $MAX_TOKEN_SIZE = 20;
+    protected $token;
 
+    public function __construct($type, $token)
+    {
+        parent::__construct($type);
+        $this->token = $token;
+
+
+    }
+
+    public function getToken()
+    {
+        return $this->token;
+
+    }
+
+    static public  function deserialize($type, $data)
+    {
+        if (is_string($data) && strlen($data) > PumpCommandCheckRequest::$MAX_TOKEN_SIZE )
+            return new PumpCommandCheckRequest($type, $data);
+        else
+            return null;
 
     }
 
@@ -54,14 +83,12 @@ class PumpCommandCheckRequest extends  PumpMessageBase
  *
  *
  * Protocol description:
- * struct PumpMessage
+ * struct  PumpMessageBase
  * {
  *   uint8_t messageType; //one of PumpMessageCodes
- *   uint8_t tokenSize;             // tokenSize
- *   char clientToken [tokenSize];  // identifier of session
- *   //optional
- *   uint16_t dataSize              // dataSize
- *   char data[dataSize]            // data
+ *   //optional:
+ *   char data[];          //command-specific data
+ *
  * };
  */
 
@@ -78,13 +105,27 @@ function pumpProtocolMessageFromBytes($data)
 
     //extract messageType
     $t = is_string($data);
-    if (is_string($data) && $len >= $offset + 2)
+    if (is_string($data) && $len >= $offset + 1)
     {
         $messageType = ord($data[0]);
-        $tokenSize = ord($data[1]);
     } else
         $mailfomed = true;
 
+    $offset += 1;
+    if (!$mailfomed)
+    {
+        switch ($messageType)
+        {
+            case  PumpMessageConsts::$COMMAND_CHECK_REQUEST :
+                $res = new PumpCommandCheckRequest($messageType, substr($data, $offset, $len - $offset));
+
+        };
+
+
+    };
+    return $res;
+
+    /*
     $offset += 2;
     //extract token
     if (!$mailfomed && $len >= ($offset + $tokenSize)  )
@@ -93,6 +134,8 @@ function pumpProtocolMessageFromBytes($data)
 
     } else
         $mailfomed = true;
+
+
 
     $offset += $tokenSize;
 
@@ -106,38 +149,12 @@ function pumpProtocolMessageFromBytes($data)
     if($dataSize > 0)
         $data = substr($data, $offset, $dataSize);
 
-    if (!$mailfomed)
-    {
-        switch ($messageType)
-        {
-            case  PumpMessageConsts::$PUMP_COMMAND_CHECK:
-                return new PumpCommandCheckRequest($messageType, $clientToken);
-
-        };
+    */
 
 
-    };
 
 
-    return $res;
 
-
-};
-
-/**
- * @param $decoded
- * returns token
- */
-
-function pumpProtocolEchoTest($decoded)
-{
-    $res = null;
-    $message = pumpProtocolMessageFromBytes($decoded);
-    if ($message)
-    {
-        $res = $message->getToken();
-    }
-    return $res;
 };
 
 ?>

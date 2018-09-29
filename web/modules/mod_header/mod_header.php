@@ -29,9 +29,7 @@
 	<div class="head">
     	<a href="schemes/" id="logo"></a>
         <ul id="MenuBar1">
-          <li><a href="schemes/">Схемы расположения</a></li>
-          <li><a href="statistics/">Статистика сетей</a></li>
-          <li><a href="points/">Мониторинг точек</a></li>
+          <li><a href="сontrollers/">Контроллеры</a></li>
           <li><a href="change_password/">Смена пароля</a></li>
           <li><a href="monitoring_management/">Настройки</a></li>
         </ul>
