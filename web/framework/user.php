@@ -192,7 +192,8 @@ class CUser
             throw new EUserException("Короткий новый пароль", EUserException::PASSWORD_ERROR);
         };
         $user_id = (int)$this->getUserId();
-        $old_md5 = md5($this->getProperty('login') . $old_pass);
+        $old_login = $this->getProperty('login');
+        $old_md5 = md5($old_login.$old_pass);
 
         $error_flag = NULL;
 

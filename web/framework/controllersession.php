@@ -10,9 +10,12 @@ class ControllerSession {
     public $id = NULL;
     public $token = NULL;
 
-    public function __construct($id,$token) {
+    public $controller;
+
+    public function __construct($id,$token,$controller) {
         $this->id = $id;
         $this->token = $token;
+        $this->controller = $controller;
 
     }
 

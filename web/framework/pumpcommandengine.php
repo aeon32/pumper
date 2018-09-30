@@ -21,16 +21,32 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 {
 
     private $dbdriver;
+    private $controllerManager;
 
-    public function __construct($dbdriver)
+    public function __construct($dbdriver, $controllerManager)
     {
         $this->dbdriver = $dbdriver;
+        $this->controllerManager = $controllerManager;
+
+    }
+
+    public function _checkCommandRequest($request)
+    {
+        $session = $this->controllerManager->getSessionByToken($request->getToken(), true);
+        return $request->getToken();
 
     }
 
     public function processCommand($request)
     {
-       return null;
+        switch($request->getType())
+        {
+            case PumpMessageConsts::$COMMAND_CHECK_REQUEST:
+                return $this->_checkCommandRequest($request);
+                break;
+        };
+
+        return null;
 
     }
 

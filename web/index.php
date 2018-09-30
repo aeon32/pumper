@@ -24,7 +24,7 @@ $base = $site->getBaseName();
 
     <title><?php print(htmlspecialchars($title)); ?></title>
     <link rel="stylesheet" href="css/<?php print($css); ?>" type="text/css"/>
-    <script type="text/javascript" src="js/mootools.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
     <?php $auxScripts = $component->getAuxScripts();
     foreach ($auxScripts as $value) print("<script type=\"text/javascript\" src=\"$value\"></script>");
     ?>

@@ -6,6 +6,7 @@ require_once("framework/user.php");
 require_once("framework/pumpprotocol.php");
 require_once("framework/pumpcommandengine.php");
 require_once("framework/testcommandengine.php");
+require_once("framework/controller.php");
 
 class ControlServerException extends Exception {
     protected $message="";
@@ -79,7 +80,7 @@ class ControlServer
         if ($this->options["database"]) {       //типа если всё проинсталировано...
             $this->gen_ierar_links = $this->options['use_ierar_links'];
             $this->database = new CMySQLDriver($this->options);
-
+            $this->controllers_manager = new ControllersManager($this->database, $this->options);
 
             //process url
             $this->urlDispatcher();
@@ -88,7 +89,7 @@ class ControlServer
                 $this->testing_pump_command_engine  = new TestCommandEngine($this->database, $this->test_mode);
             };
 
-            $this->pump_command_engine = new PumpCommandEngine($this->database);
+            $this->pump_command_engine = new PumpCommandEngine($this->database, $this->controllers_manager);
 
 
         } else {

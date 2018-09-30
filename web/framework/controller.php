@@ -40,23 +40,22 @@ function sortByNameFunction(Scheme $a, Scheme $b)
 class ControllersManager
 {
     private $database = NULL;
-    private $site = NULL;
-    private $controllers_table;
+    private $controller_table;
 
     private $controllers;
     private $list_loaded = false;
+    private $sessions;
 
 
-    public function __construct(CSite $site, $options)
+    public function __construct($dbdriver, $options)
     {
-        $this->site = $site;
-        $this->database = $site->getDBDriver();
-
+        $this->database = $dbdriver;
 
         $this->controller_table = $options['prefix'] . 'controller';
         $this->controller_list_view = $options['prefix'] . 'controller_list';
         $this->controller_session_table = $options['prefix'] . 'controller_session';
         $this->controllers = array();
+        $this->sessions = array();
     }
 
 
@@ -136,14 +135,52 @@ class ControllersManager
         return $controller;
     }
 
+    public function createController($imei) {
+        $driver=$this->database;
+        $escapedImei = $driver->escapeString($imei);
+
+        $query = $driver->exec("INSERT INTO $this->controller_table (name,createtime, imei) VALUES('$escapedImei',NOW(3),'$escapedImei')");
+        $insert_id = $query->insert_id();
+
+        //все схемы сь
+        //$this->deleteTemporaries();
+
+        $controller = new Controller($insert_id,$imei, $imei);
+        $this->controllers[$insert_id] = $controller;
+        return $controller;
+
+    }
+
+    public function createSession($controller, $token) {
+        $driver=$this->database;
+        $escapedToken = $driver->escapeString($token);
+
+        $query = $driver->exec("INSERT INTO $this->controller_session_table (controller_id, token, createtime, lasttime) 
+                                       VALUES($controller->id,'$escapedToken', NOW(3), NOW(3))"
+                               );
+        $insert_id = $query->insert_id();
+
+        $session = new ControllerSession($insert_id, $token, $controller);
+        $controller->session = $session;
+        return $controller;
+
+    }
+
+    public function updateSession($session) {
+        $driver=$this->site->getDBDriver();
+
+        $query = $driver->exec("UPDATE $this->controller_session_table SET update_time = NOW(3) WHERE id=$session->id");
+
+    }
+
 
     /**
      *
-     * Функция сохраняет информацию о схеме в БД
+     * Функция сохраняет информацию о контроллере
      * @param Scheme $scheme
      */
 
-    public function save(Controller $controller, $return_saved)
+    public function saveController(Controller $controller, $return_saved)
     {
         $driver = $this->site->getDBDriver();
         $name = $driver->escapeString($controller->name);
@@ -159,13 +196,16 @@ class ControllersManager
             return $new_controller;
     }
 
+
+
+
     /**
      * Функция возвращает список контроллеров
      */
     public function getControllersList()
     {
         if (!$this->list_loaded) {
-            $driver = $this->site->getDBDriver();
+            $driver = $this->database;
             $controller_table = $this->controller_table;
             $controller_list = $this->controller_list_view;
 
@@ -190,7 +230,9 @@ class ControllersManager
 
                 if (!is_null($row[3]))
                 {
-                    $controller->session = new ControllerSession($row[3], $row[4]);
+                    $controller->session = new ControllerSession($row[3], $row[4], $controller);
+                    $this->sessions[ $row[4] ] = $controller->session;
+
                 };
 
 
@@ -199,6 +241,43 @@ class ControllersManager
             $this->list_loaded = true;
         }
         return $this->controllers;
+    }
+
+    public function getSessionByToken($token, $updateTime)
+    {
+        $this->getControllersList(); //load data
+        $session = null;
+        if (array_key_exists( $token, $this->sessions))
+        {
+            $session = $this->sessions[$token];
+            $this->updateSession($session);
+
+        }  else
+        {
+            $this->database->simpleExec("LOCK TABLES $this->controller_table WRITE, $this->controller_session_table WRITE");
+            //token===imei (?)
+            //try to find controller
+            $findedController = null;
+            foreach ($this->controllers as &$controller)
+            {
+                if ($controller->imei === $token )
+                {
+                    $findedController = $controller;
+                    break;
+                }
+            }
+            if (!$findedController)
+                $findedController = $this->createController($token);
+
+            $session = $this->createSession($findedController, $token );
+
+            $this->database->simpleExec("UNLOCK TABLES");
+
+
+
+        };
+        return $session;
+
     }
 
 

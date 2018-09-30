@@ -548,4 +548,9 @@ background:url("../images/button_hover.png") no-repeat scroll center center tran
  color:rgb(255,0,0) 
 }
 
+#error_message{
+  color:red;
+  display:none;
+
+}
 

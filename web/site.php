@@ -365,7 +365,7 @@ class CSite
     {
         if (!isset($this->controllers_manager)) {
             require_once("framework/controller.php");
-            $this->controllers_manager = new ControllersManager($this, $this->options);
+            $this->controllers_manager = new ControllersManager($this->database, $this->options);
         };
         return $this->controllers_manager;
     }
