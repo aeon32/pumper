@@ -37,11 +37,12 @@ function errorRequest($message = NULL, $buffer = NULL)
 
 
 
-function  getControllersList(CSite $site)
+function  getControllersList($database, $options)
 {
-    $options = &$site->getOptions();
+
     ob_start();
-    $controllers_manager = $site->getControllersManager();
+    require_once("framework/controller.php");
+    $controllers_manager = new ControllersManager($database, $options);
     $controllers = $controllers_manager->getControllersList();
 
 
@@ -60,12 +61,25 @@ function  getControllersList(CSite $site)
 
 
 header("Content-type:text/xml", true);
+
 try {
 
-    $prefix = "components";
-    $site = new CSite($prefix);
-    $user = $site->getUser();
-    if (!$user->getAuthorized()) {
+    $options = (array)(new CConfig);   //получили массив свойств
+    if ($options["debug"])
+    {
+        header("Access-Control-Allow-Origin:*", true);
+        ini_set('display_errors', 1);
+        error_reporting(E_ALL ^ E_NOTICE);
+    };
+
+    $user = null;
+    if ($options["database"]) {       //типа если всё проинсталировано...
+        $database = new CMySQLDriver($options);
+        $session = new CSession($options);
+        $user = new CUser($database, $session, $options);
+    };
+
+    if ( !$options["debug"] &&  (!$user || !$user->getAuthorized())) {
         notAuthorizedResponse();
     } else {
         //$_POST['request']='save_data';
@@ -76,15 +90,14 @@ try {
             $_GET['request'] = '';
         switch ($_GET['request']) {
             case 'get_controllers_list':
-                getControllersList($site);
+                getControllersList($database, $options);
                 break;
             default:
                 errorRequest();
         };
     }
 } catch (ESQLException $exc) {
-    print($exc);
-    errorRequest();
+    errorRequest($exc->getMessage());
 };
 
 

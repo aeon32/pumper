@@ -14,6 +14,7 @@ class CConfig
     public $database = NULL;
     public $prefix = 'pump_';
     public $debug = true;
+    public $session_name = "pumpcontroller";
 
     public $sitename = "wifi.ru";
     public $pid_file = "/var/lib/snmp-controller/snmp_daemon.pid";
@@ -55,6 +56,9 @@ class CConfig
 
         if (array_key_exists('point_request_interval', $options)) {
             $this->point_request_interval = $options['point_request_interval'];
+        }
+        if (array_key_exists('session_name', $options)) {
+            $this->session_name = $options['session_name'];
         }
 
     }
