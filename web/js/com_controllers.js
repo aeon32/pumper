@@ -92,8 +92,8 @@ function ControllersManagers(timeout) {
 
             $(numberTD).text(i+1);
             nameLink.text(controller.name);
-            nameLink[0].href =  "controller/" + controller.id;
-            ledRow[0].src = "images/" +  (controller.session === null  ? "off.png" : "on.png" );
+            nameLink[0].href =  "controller/" + controller.id +"/";
+            ledRow[0].src = "images/" +  (controller.online ? "on.png" : "off.png" );
 
 
         }

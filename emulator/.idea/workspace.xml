@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef33a982-4207-47ff-995a-80941eed87d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/emulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/emulator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/pump_protocol_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/pump_protocol_tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/components/com_controllers/com_controllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/components/com_controllers/com_controllers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/framework/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/framework/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/js/com_controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/js/com_controllers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +32,7 @@
       <file leaf-file-name="pump_protocol_tests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/pump_protocol_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="282">
               <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -168,9 +160,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="542" />
-    <option name="y" value="260" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="249" />
     <option name="width" value="1400" />
     <option name="height" value="824" />
   </component>
@@ -360,7 +351,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="542" y="260" width="1400" height="824" extended-state="0" />
+    <frame x="-4" y="0" width="1488" height="953" extended-state="7" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -369,13 +360,13 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.24894515" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23994254" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23291492" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3994374" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.34761322" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -702,7 +693,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/pump_protocol_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="282">
           <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />

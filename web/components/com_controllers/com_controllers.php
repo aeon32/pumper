@@ -80,12 +80,12 @@ class com_controllers extends AbstractComponent
                     $polos = false;
                     foreach ($controllers as &$value) {
                         $class = $polos ? ' class="polos_tr" ' : NULL;
-                        $image = $value->session ? "images/on.png" : "images/off.png";
+                        $image = $value->online ? "images/on.png" : "images/off.png";
                         print("
 	       <tr $class>
 	        <td class=\"td_small\">$i</td>
 			<td class=\"td_small\"><input type=\"checkbox\" id=\"a$value->id\"  name=\"selected$value->id\" /></td>
-			<td class=\"td_big\"><a href=\"scheme_edit/$value->id/\">" . htmlspecialchars($value->name) . "</a></td>
+			<td class=\"td_big\"><a href=\"controller/$value->id/\">" . htmlspecialchars($value->name) . "</a></td>
 			<td class=\"td_small\"><img src=\"$image\" /></td>
 			
 		</tr>");

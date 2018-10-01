@@ -2,12 +2,9 @@
 RewriteEngine On
 
 
-#RewriteRule ^/cab/$ cab.php
-#RewriteRule ^/user_money/$ user_money.php
-#RewriteRule ^chat/ind/.*$ index.php
 RewriteRule ^login/$ login.php
 RewriteRule ^controlserver/.*$ controlserver.php
-RewriteRule ^((?!(images|css|chat|js|user_images|login|controlserver)).*)/$ index.php
+RewriteRule ^((?!(images|css|js|user_images|login|controlserver)).*)/$ index.php
 
 
 ###Перенаправления для статического контента:

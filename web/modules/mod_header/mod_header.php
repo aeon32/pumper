@@ -3,7 +3,7 @@
   * Модуль-шапка 
   * 
   */
- require_once (PATH_BASE."/framework/abstractmodule.php");
+require_once(PATH_BASE . "/framework/abstractmodule.php");
  
  class  mod_header extends CAbstractModule  {
  	
@@ -34,9 +34,8 @@
           <li><a href="monitoring_management/">Настройки</a></li>
         </ul>
         <a href="login/?action=logout" id="enter">Выход</a>
-
-	<div id="strip"></div>
-       </div>
+        <div id="strip"></div>
+    </div>
 <?php  	 
       };//else
     } //render

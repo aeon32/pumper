@@ -317,6 +317,11 @@ class CSite
                     $_GET['option'] = 'com_controllers';
                     break;
 
+                case 'controller':
+                    $_GET['option'] = 'com_controller_edit';
+                    $_GET['id'] = $second_parameter;
+                    break;
+
             };
 
 

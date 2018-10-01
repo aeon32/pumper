@@ -7,7 +7,8 @@ class Controller
     public $name = NULL;
     public $imei;
     public $description = '';
-    public $session = NULL;
+    public $last_session = NULL;
+    public $online = FALSE;
     public $info_is_full;
 
 
@@ -26,7 +27,8 @@ class ControllerLite
     public $id;
     public $name;
     public $imei;
-    public $session;
+    public $last_session;
+    public $online;
 };
 
 
@@ -116,17 +118,29 @@ class ControllersManager
             $controller = $this->controllers[$id];
             $need_load = !$controller->info_is_full;
         } else {
-            $controller = new Controller($id, '');
+            $controller = new Controller($id, '',null);
             $need_load = true;
             $this->controllers[$id] = $controller;
         };
 
         if ($need_load) {
-            $driver = $this->site->getDBDriver();
-            $driver->simpleExec("LOCK TABLES $this->controller_table READ");
+            $driver = $this->database;
+            $driver->simpleExec("LOCK TABLES $this->controller_table READ, $this->controller_session_table READ");
             $query = $driver->exec("SELECT name 
      								FROM $this->controller_table
-     								WHERE controller_id=$id");
+     								WHERE id=$id");
+            /*
+            select pcs.id AS id,pcs.token, (NOW(3) - last_sessions.lasttime ) < (SELECT session_expiration_time FROM pump_settings) AS section_active
+      from
+		  pump_controller_session pcs
+		  join
+          (select pump_controller_session.controller_id AS controller_id,max(pump_controller_session.lasttime) AS lasttime
+		    from pump_controller_session  where controller_id = 1 group by pump_controller_session.controller_id
+
+		   ) as last_sessions
+		  on pcs.controller_id = last_sessions.controller_id and pcs.lasttime = last_sessions.lasttime;
+            */
+
             $driver->simpleExec("UNLOCK TABLES");
             if ($query->num_rows()) {
                 $row = $query->getRow(0);
@@ -216,7 +230,7 @@ class ControllersManager
 
 
             $query = $driver->exec("
-				SELECT controller_id, name, imei, session_id, token 
+				SELECT controller_id, name, imei, last_session_id, token,session_active, lasttime 
 				FROM $controller_list
 			");
 
@@ -235,8 +249,10 @@ class ControllersManager
 
                 if (!is_null($row[3]))
                 {
-                    $controller->session = new ControllerSession($row[3], $row[4], $controller);
-                    $this->sessions[ $row[4] ] = $controller->session;
+                    $controller->last_session = new ControllerSession($row[3], $row[4], $controller);
+                    $this->last_sessions[ $row[4] ] = $controller->session;
+                    if ($row[5])
+                        $controller->online = true;
 
                 };
 
@@ -309,7 +325,8 @@ class ControllersManager
             $controllerLite->id = $controller->id;
             $controllerLite->name = $controller->name;
             $controllerLite->imei = $controller->imei;
-            $controllerLite->session = is_object($controller->session ) ? $controller->session->id : null;
+            $controllerLite->last_session = is_object($controller->last_session ) ? $controller->last_session->id : null;
+            $controllerLite->online = $controller->online;
             $res[] = $controllerLite;
 
         };
