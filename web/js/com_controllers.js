@@ -23,10 +23,42 @@ function error_result(responseXML) {
 function ControllersManagers(timeout) {
     this.error_timeout = 10000;
     this.timeout = timeout;
-    this.ajaxUrl = $('#basename')[0].value+'ajax.php';
+    this.baseName = $('#basename')[0].value;
+    this.ajaxUrl = this.baseName +'ajax.php';
+
 
     this.controllers_table_body = $("#controllers_table")[0];
     this.error_message = $("#error_message");
+
+    this.controllersTableCreateRow = function(index)
+    {
+        var row = this.controllers_table_body.insertRow(index);
+        var numberRow = row.insertCell(0);
+        var checkBoxRow = row.insertCell(1);
+        var nameRow = row.insertCell(2);
+        var ledRow = row.insertCell(3);
+        numberRow.className = "td_small";
+        checkBoxRow.className = "td_small";
+        nameRow.className = "td_big";
+        ledRow.className = "td_small";
+
+        var checkBox = document.createElement("input");
+        checkBoxRow.appendChild(checkBox);
+        checkBox.type = "checkbox";
+
+        var nameLink = document.createElement("a");
+        nameRow.appendChild(nameLink);
+        var ledImage = document.createElement("img");
+        ledRow.appendChild(ledImage);
+
+        row.controllerCheckBox = checkBox;
+        row.nameLink = nameLink;
+        row.ledImage = ledImage;
+
+        return row;
+
+
+    };
 
     this.updateTable = function (controllerList)
     {
@@ -37,15 +69,34 @@ function ControllersManagers(timeout) {
         if (rowCount < expectedRowCount) {
             for (i = 0; i < expectedRowCount - rowCount; i++)
             {
-                this.controllers_table_body.insertRow();
+                this.controllersTableCreateRow(-1);
             }
         } else {
             for (i = 0; i < rowCount - expectedRowCount; i++)
             {
-                this.controllers_table_body.deleteRow();
+                this.controllers_table_body.deleteRow(this.controllers_table_body.rows.length -1);
             }
 
         };
+
+        for (i = 0; i <expectedRowCount; i++)
+        {
+            var controller = controllerList[i];
+            var row =  this.controllers_table_body.rows[i+1];
+            row.className =  i %2 ? "polos_tr" : "";
+
+            var numberTD = row.cells[0];
+            var checkBox = $("input",row.cells[1]);
+            var nameLink = $("a", row.cells[2]);
+            var ledRow = $("img", row.cells[3]);
+
+            $(numberTD).text(i+1);
+            nameLink.text(controller.name);
+            nameLink[0].href =  "controller/" + controller.id;
+            ledRow[0].src = "images/" +  (controller.session === null  ? "off.png" : "on.png" );
+
+
+        }
 
 
 

@@ -76,7 +76,7 @@ class com_controllers extends AbstractComponent
                     </tr>
                     <?php
                     $i = 1;
-                    $controllers = $this->controllers_manager->getNotTemporaryControllersListOrdered();
+                    $controllers = $this->controllers_manager->getControllersList();
                     $polos = false;
                     foreach ($controllers as &$value) {
                         $class = $polos ? ' class="polos_tr" ' : NULL;

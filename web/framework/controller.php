@@ -19,9 +19,15 @@ class Controller
 
         $this->info_is_full = false;
     }
-
-
 }
+
+class ControllerLite
+{
+    public $id;
+    public $name;
+    public $imei;
+    public $session;
+};
 
 
 function sortByNameFunction(Scheme $a, Scheme $b)
@@ -29,7 +35,6 @@ function sortByNameFunction(Scheme $a, Scheme $b)
     $i = strcmp($a->name, $b->name);
     return $i > 0;
 }
-
 
 /**
  *
@@ -167,9 +172,9 @@ class ControllersManager
     }
 
     public function updateSession($session) {
-        $driver=$this->site->getDBDriver();
+        $driver=$this->database;
 
-        $query = $driver->exec("UPDATE $this->controller_session_table SET update_time = NOW(3) WHERE id=$session->id");
+        $query = $driver->exec("UPDATE $this->controller_session_table SET lasttime = NOW(3) WHERE id=$session->id");
 
     }
 
@@ -280,18 +285,38 @@ class ControllersManager
 
     }
 
-
     /**
-     * Функция возвращает список схем, сортированный по именам
+     * @param $controller
+     * @return bool
      */
-    public function getNotTemporaryControllersListOrdered()
+    static private  function plainArrayFilter($controller)
     {
-        $this->getControllersList();
-        //$notTemporaryControllers = array_filter($this->controllers, "getNotTemporary");
-        $notTemporaryControllers = $this->controllers;
-        return $notTemporaryControllers;
+        return true;
     }
 
-}
+    /**
+     * Функция возвращает список контроллеров в виде простого массива
+     */
+    public function getControllersAsPlainArray()
+    {
 
-;
+
+        $res = array();
+        $this->getControllersList();
+        foreach ($this->controllers as &$controller)
+        {
+            $controllerLite = new ControllerLite();
+            $controllerLite->id = $controller->id;
+            $controllerLite->name = $controller->name;
+            $controllerLite->imei = $controller->imei;
+            $controllerLite->session = is_object($controller->session ) ? $controller->session->id : null;
+            $res[] = $controllerLite;
+
+        };
+
+        $plainControllersArray = array_values($res);
+
+        return $res;
+    }
+
+};

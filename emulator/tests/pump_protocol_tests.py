@@ -31,7 +31,8 @@ class PumpProtocolTests(unittest.TestCase):
         global URL
 
         controller = controller_emul.pump_protocol.PumpProtocol(URL)
-        controller.send_check_command_request(bytes())
+        token = "abcd".encode("latin-1");
+        controller.send_check_command_request(token)
 
         self.assertTrue(True)
 

@@ -43,7 +43,7 @@ function  getControllersList($database, $options)
     ob_start();
     require_once("framework/controller.php");
     $controllers_manager = new ControllersManager($database, $options);
-    $controllers = $controllers_manager->getControllersList();
+    $controllers = $controllers_manager->getControllersAsPlainArray();
 
 
     $out = ob_get_contents();
@@ -53,6 +53,7 @@ function  getControllersList($database, $options)
     print('<?xml version="1.0"  encoding="utf-8"?>');
 
     print('<controller_list>');
+    //print_r($controllers);
     print(htmlspecialchars(json_encode( $controllers)));
     print('</controller_list>');
 }
