@@ -132,6 +132,7 @@ function ControllersManagers(timeout) {
     this.request_error = function(jqXHR, textStatus, errorThrown)
     {
         var controllersManager = this;
+        this.error_message.text("Ошибка обновления информации");
         this.error_message.show();
         setTimeout(function() {controllersManager.updateTableRequest();}, controllersManager.error_timeout);
 

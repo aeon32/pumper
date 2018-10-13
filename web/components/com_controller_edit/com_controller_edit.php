@@ -134,6 +134,12 @@ class com_controller_edit extends AbstractComponent
                 <h1>Управление контроллером</h1>
             </div>
 
+            <form name="admin_table" id="admin_table" method="post" action="">
+                <input type="hidden" id="basename" value="<?php print($this->site->getBaseName()); ?>"/>
+                <input type="hidden" id="controller_id" value="<?php print(is_object($this->controller) ? $this->controller->id : "null")?>" />
+                <input id="refresh_settings_button" value="Обновить" type="button"/>
+            </form>
+
             <?php $this->renderControllerEditor(); ?>
 
         </div>
@@ -142,8 +148,8 @@ class com_controller_edit extends AbstractComponent
 
     public function renderControllerEditor()
     {
-        require_once(PATH_BASE . '/components/controller_editor/controller_editor.php');
-        renderControllerEditor();
+       // require_once(PATH_BASE . '/components/controller_editor/controller_editor.php');
+       // renderControllerEditor();
     }
 
     public function render()

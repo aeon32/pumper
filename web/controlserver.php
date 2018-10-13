@@ -118,10 +118,10 @@ class ControlServer
     {
         if ($this->options["debug"] && is_string($this->test_mode))
         {
-            $res = $this->testing_pump_command_engine->processCommand($parsedRequest);
+            $res = $this->testing_pump_command_engine->processRequest($parsedRequest);
         } else
         {
-            $res = $this->pump_command_engine->processCommand($parsedRequest);
+            $res = $this->pump_command_engine->processRequest($parsedRequest);
         };
 
 
@@ -148,8 +148,8 @@ class ControlServer
 
 
         if (is_string($output)) {
-            //header('Content-Type:application/octet-stream');
-            //header('Content-Length:' . strlen($output));
+            header('Content-Type:application/octet-stream');
+            header('Content-Length:' . strlen($output));
             print ($output);
         }
         else

@@ -9,7 +9,8 @@
 abstract class PumpMessageConsts
 {
     public static $COMMAND_CHECK_REQUEST = 0x30;
-    public static $NO_COMMAND_RESPONSE = 0x31;
+    public static $NO_COMMAND_RESPONSE = 0x31; //nothing to do
+    public static $GET_INFO_RESPONSE = 0x32;   //controller must return information
 
 
 }
@@ -40,15 +41,16 @@ class PumpMessageBase
 };
 
 /**
- *  Request to controlserver to retrieve pending command for execution
+ *  Basic request from controlServer
  *  Format:
- *  struct PumpCommandCheckRequest
+ *  struct BasicRequest
  *  {
  *    uint8_t messageType; //one of PumpMessageCodes
- *    char tokenSize;      //tokenSize
+ *    char token[];      //tokenSize
+ * }
 **/
 
-class PumpCommandCheckRequest extends  PumpMessageBase
+class BasicRequest extends  PumpMessageBase
 {
     private static $MAX_TOKEN_SIZE = 20;
     protected $token;
@@ -69,8 +71,8 @@ class PumpCommandCheckRequest extends  PumpMessageBase
 
     static public  function deserialize($type, $data)
     {
-        if (is_string($data) && strlen($data) > PumpCommandCheckRequest::$MAX_TOKEN_SIZE )
-            return new PumpCommandCheckRequest($type, $data);
+        if (is_string($data) && strlen($data) <= BasicRequest::$MAX_TOKEN_SIZE )
+            return new BasicRequest($type, $data);
         else
             return null;
 
@@ -78,19 +80,19 @@ class PumpCommandCheckRequest extends  PumpMessageBase
 
 }
 
-/**
- * @param $data protocol-packed binary string
- *
- *
- * Protocol description:
- * struct  PumpMessageBase
- * {
- *   uint8_t messageType; //one of PumpMessageCodes
- *   //optional:
- *   char data[];          //command-specific data
- *
- * };
- */
+
+
+class BasicResponse extends  PumpMessageBase
+{
+
+    public function __construct($type)
+    {
+        parent::__construct($type);
+    }
+
+
+}
+
 
 function pumpProtocolMessageFromBytes($data)
 {
@@ -117,7 +119,7 @@ function pumpProtocolMessageFromBytes($data)
         switch ($messageType)
         {
             case  PumpMessageConsts::$COMMAND_CHECK_REQUEST :
-                $res = new PumpCommandCheckRequest($messageType, substr($data, $offset, $len - $offset));
+                $res = BasicRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
 
         };
 
@@ -125,31 +127,6 @@ function pumpProtocolMessageFromBytes($data)
     };
     return $res;
 
-    /*
-    $offset += 2;
-    //extract token
-    if (!$mailfomed && $len >= ($offset + $tokenSize)  )
-    {
-        $clientToken = substr($data, $offset, $tokenSize);
-
-    } else
-        $mailfomed = true;
-
-
-
-    $offset += $tokenSize;
-
-    //extract data
-    $mailfomed = $mailfomed || ( $len > $offset && $len < ($offset + 2));
-
-    if (!$mailfomed && $len >= $offset + 2)
-        $dataSize = unpack("n", $data, $offset);
-
-    $offset +=2;
-    if($dataSize > 0)
-        $data = substr($data, $offset, $dataSize);
-
-    */
 
 
 

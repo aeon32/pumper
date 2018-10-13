@@ -1,6 +1,6 @@
 <?php
 /**
- * В этом файле описаны классы для работы с ДБ MySQL
+ * В этом файле описаны классы для работы с БД MySQL
  *
  *
  */
@@ -166,7 +166,7 @@ class CMySQLDriver extends CDBDriver
         $this->debug = array_key_exists('debug', $options) ? $options['debug'] : false;
 
         //Устанавливаем соединение с базой данных
-        if (!$this->link = @mysqli_connect($host, $user, $password)) {
+        if (!$this->link = @mysqli_connect('p:'.$host, $user, $password)) {
             $servermessage = mysqli_connect_error();
             $errorno = mysqli_connect_errno();
             throw (new ESQLException("Ошибка при соединении с базой данных." . ($this->debug ? "Сообщение сервера: $servermessage." : "") . "Код ошибки: $errorno"));

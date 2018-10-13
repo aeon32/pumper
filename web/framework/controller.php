@@ -107,9 +107,9 @@ class ControllersManager
 
 
     /**
-     * Функция возвращает информацию о контроллере по идентификатору
+     * Функция возвращает информацию о контроллере
      */
-    public function getInfo($id)
+    public function getController($id)
     {
         //пытаемся найти в словаре:
         $need_load = false;
@@ -125,26 +125,31 @@ class ControllersManager
 
         if ($need_load) {
             $driver = $this->database;
-            $driver->simpleExec("LOCK TABLES $this->controller_table READ, $this->controller_session_table READ");
-            $query = $driver->exec("SELECT name 
-     								FROM $this->controller_table
-     								WHERE id=$id");
-            /*
-            select pcs.id AS id,pcs.token, (NOW(3) - last_sessions.lasttime ) < (SELECT session_expiration_time FROM pump_settings) AS section_active
-      from
-		  pump_controller_session pcs
-		  join
-          (select pump_controller_session.controller_id AS controller_id,max(pump_controller_session.lasttime) AS lasttime
-		    from pump_controller_session  where controller_id = 1 group by pump_controller_session.controller_id
-
-		   ) as last_sessions
-		  on pcs.controller_id = last_sessions.controller_id and pcs.lasttime = last_sessions.lasttime;
-            */
-
-            $driver->simpleExec("UNLOCK TABLES");
+            $query = $driver->exec(
+                "SELECT name, session.id, session.token, session.lasttime, (NOW(3) - session.lasttime ) < (SELECT session_expiration_time FROM pump_settings) AS section_active 
+                 FROM $this->controller_table
+                 LEFT JOIN
+                  (
+                    SELECT pcs.id AS id, pcs.token, pcs.controller_id, pcs.lasttime
+                    FROM $this->controller_session_table as pcs
+                    WHERE controller_id = $id
+                    ORDER BY pcs.lasttime DESC
+                    LIMIT 1
+                   ) as session
+                   ON TRUE
+                  WHERE $this->controller_table.id=1");
             if ($query->num_rows()) {
                 $row = $query->getRow(0);
                 $controller->name = $row[0];
+
+                if (!is_null($row[1]))
+                {
+                    $controller->last_session = new ControllerSession($row[1], $row[2], $controller);
+                    $this->last_sessions[ $row[2] ] = $controller->last_session;
+                    if ($row[4])
+                        $controller->online = true;
+
+                };
             } else {
                 unset ($this->controllers[$id]);
                 return NULL;
@@ -250,7 +255,7 @@ class ControllersManager
                 if (!is_null($row[3]))
                 {
                     $controller->last_session = new ControllerSession($row[3], $row[4], $controller);
-                    $this->last_sessions[ $row[4] ] = $controller->session;
+                    $this->last_sessions[ $row[4] ] = $controller->last_session;
                     if ($row[5])
                         $controller->online = true;
 

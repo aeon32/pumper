@@ -34,7 +34,7 @@ class TestCommandEngine extends  PumpCommandEngineBase
 
     }
 
-    public function processCommand($request)
+    public function processRequest($request)
     {
 
         switch ($this->testmode)
