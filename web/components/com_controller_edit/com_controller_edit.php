@@ -55,7 +55,7 @@ class com_controller_edit extends AbstractComponent
             $this->mode = self::MODE_CREATE_NEW;
         } else if (is_numeric($id)) {
             $id = (int)$id;
-            $this->controller = $this->controller_manager->getInfo($id);
+            $this->controller = $this->controller_manager->getController($id);
             if (!$this->controller) {
                 $this->mode = self::MODE_NOT_FOUND;
             } else if ($this->scheme->temporary) {
@@ -133,6 +133,7 @@ class com_controller_edit extends AbstractComponent
             <div class="header_div">
                 <h1>Управление контроллером</h1>
             </div>
+            <div id="error_message">Ошибка обновления информации</div>
 
             <form name="admin_table" id="admin_table" method="post" action="">
                 <input type="hidden" id="basename" value="<?php print($this->site->getBaseName()); ?>"/>

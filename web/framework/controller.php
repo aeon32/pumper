@@ -126,7 +126,7 @@ class ControllersManager
         if ($need_load) {
             $driver = $this->database;
             $query = $driver->exec(
-                "SELECT name, session.id, session.token, session.lasttime, (NOW(3) - session.lasttime ) < (SELECT session_expiration_time FROM pump_settings) AS section_active 
+                "SELECT name, session.id, session.token, session.lasttime, TIMESTAMPDIFF(MICROSECOND, session.lasttime, NOW(3) )/1000000  < (SELECT session_expiration_time FROM pump_settings) AS section_active 
                  FROM $this->controller_table
                  LEFT JOIN
                   (
@@ -137,17 +137,20 @@ class ControllersManager
                     LIMIT 1
                    ) as session
                    ON TRUE
-                  WHERE $this->controller_table.id=1");
+                  WHERE $this->controller_table.id=$id");
             if ($query->num_rows()) {
                 $row = $query->getRow(0);
                 $controller->name = $row[0];
 
                 if (!is_null($row[1]))
                 {
-                    $controller->last_session = new ControllerSession($row[1], $row[2], $controller);
-                    $this->last_sessions[ $row[2] ] = $controller->last_session;
+                    $online = false;
                     if ($row[4])
-                        $controller->online = true;
+                        $online = true;
+
+                    $controller->last_session = new ControllerSession($row[1], $row[2], $controller, $online);
+                    $this->last_sessions[ $row[2] ] = $controller->last_session;
+                    $controller->online = $online;
 
                 };
             } else {
@@ -184,7 +187,7 @@ class ControllersManager
                                );
         $insert_id = $query->insert_id();
 
-        $session = new ControllerSession($insert_id, $token, $controller);
+        $session = new ControllerSession($insert_id, $token, $controller, true);
         $controller->session = $session;
         return $controller;
 
@@ -254,10 +257,13 @@ class ControllersManager
 
                 if (!is_null($row[3]))
                 {
-                    $controller->last_session = new ControllerSession($row[3], $row[4], $controller);
-                    $this->last_sessions[ $row[4] ] = $controller->last_session;
+                    $online = false;
                     if ($row[5])
-                        $controller->online = true;
+                        $online = true;
+
+                    $controller->last_session = new ControllerSession($row[3], $row[4], $controller, $online);
+                    $this->last_sessions[ $row[4] ] = $controller->last_session;
+                    $controller->online = $online;
 
                 };
 
@@ -273,9 +279,9 @@ class ControllersManager
     {
         $this->getControllersList(); //load data
         $session = null;
-        if (array_key_exists( $token, $this->sessions))
+        if (array_key_exists( $token, $this->last_sessions) && $this->last_sessions[$token]->active)
         {
-            $session = $this->sessions[$token];
+            $session = $this->last_sessions[$token];
             $this->updateSession($session);
 
         }  else

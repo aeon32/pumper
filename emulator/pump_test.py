@@ -19,11 +19,11 @@ import controller_emul.pump_jobs
 
 ##s
 
-def test1(queueDispatcher, pumpProtocol):
+def test1(queueDispatcher, pumpProtocol, token):
 
-    registerJob = controller_emul.pump_jobs.RegisterControllerJob(pumpProtocol)
+    checkCommandJob = controller_emul.pump_jobs.CheckCommandJob(pumpProtocol, 1, token)
 
-    queueDispatcher.push_job(registerJob)
+    queueDispatcher.push_job(checkCommandJob)
 
     def terminateEmptyRunner():
         if queueDispatcher.queue_size() == 0:
@@ -59,12 +59,14 @@ def main(argv):
         ch.setFormatter(formatter)
         logger.addHandler(ch)
 
+        url = url + "/controlserver/"
+
         logger.debug("URL : %s", url)
 
 
         queueDispatcher = controller_emul.queuedispatcher.QueueDispatcher()
         pumpProtocol = controller_emul.pump_protocol.PumpProtocol(url)
-        test1(queueDispatcher, pumpProtocol)
+        test1(queueDispatcher, pumpProtocol, 'abcd'.encode("latin-1"))
 
 
 

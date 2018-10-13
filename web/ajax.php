@@ -71,7 +71,7 @@ function getControllerInfo($database, $options, $controller_id)
     require_once("framework/pumpcommandengine.php");
 
     $controllers_manager = new ControllersManager($database, $options);
-    $command_engine = new PumpCommandEngine($database, $controllers_manager);
+    $command_engine = new PumpCommandEngine($database, $controllers_manager, $options);
     $command_result = $command_engine->pushGetControllerInfoCommand($controller_id);
 
 
@@ -93,6 +93,9 @@ function getControllerInfo($database, $options, $controller_id)
                 break;
             case PumpCommandEngine::$CONTROLLER_IS_OFFLINE:
                 $error_string = "controller_is_offline";
+                break;
+            case PumpCommandEngine::$CONTROLLER_NOT_RESPONDS:
+                $error_string = "controller_not_responds";
                 break;
         }
         errorRequest($error_string);
@@ -148,9 +151,12 @@ try {
                 errorRequest("error_request");
         };
     }
-} catch (ESQLException $exc) {
-    errorRequest($exc->getMessage());
-};
+} catch (Exception $exc)
+{
+    errorRequest("internal_error", $exc->getMessage());
+
+}
+
 
 
 ?>

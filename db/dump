@@ -28,7 +28,7 @@ CREATE TABLE `pump_controller` (
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Время создания записи',
   `imei` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `pump_controller` (
 
 LOCK TABLES `pump_controller` WRITE;
 /*!40000 ALTER TABLE `pump_controller` DISABLE KEYS */;
-INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-01 09:41:02','abcd'),(2,'Контроллер 2','2018-10-01 09:41:18','defg'),(3,'','2018-10-01 09:45:27','');
+INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-01 09:41:02','abcd');
 /*!40000 ALTER TABLE `pump_controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,10 +49,15 @@ DROP TABLE IF EXISTS `pump_controller_command`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pump_controller_command` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор сессии',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор команды',
+  `session_id` int(11) NOT NULL COMMENT 'Идентификатор cессии',
   `command_type` tinyint(3) unsigned NOT NULL COMMENT 'Тип команды',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `createtime` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT 'Время создания команды',
+  `processed` tinyint(1) NOT NULL DEFAULT '0',
+  `result` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_pump_controller_command_session_id` (`session_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +103,7 @@ CREATE TABLE `pump_controller_session` (
   PRIMARY KEY (`id`),
   KEY `idx_pump_controller_session_controller_id` (`controller_id`),
   KEY `idx_pump_controller_session_lasttime` (`lasttime`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=590 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +112,6 @@ CREATE TABLE `pump_controller_session` (
 
 LOCK TABLES `pump_controller_session` WRITE;
 /*!40000 ALTER TABLE `pump_controller_session` DISABLE KEYS */;
-INSERT INTO `pump_controller_session` VALUES (1,'1','abcd','2018-09-29 12:54:59.435','2018-09-29 14:18:36.000'),(2,'1','abcd','2018-09-29 12:55:07.518','2018-09-29 12:55:07.518'),(3,'3','','2018-10-01 09:45:27.086','2018-10-01 09:45:27.086'),(4,'3','','2018-10-01 09:46:04.652','2018-10-01 09:46:04.652'),(5,'1','abcd','2018-10-01 09:46:26.956','2018-10-01 09:46:26.956'),(6,'1','abcd','2018-10-01 09:47:44.541','2018-10-01 09:47:44.541'),(7,'1','abcd','2018-10-01 09:53:43.120','2018-10-01 09:53:43.120'),(8,'1','abcd','2018-10-01 09:55:28.725','2018-10-01 09:55:28.725'),(9,'1','abcd','2018-10-01 09:58:03.558','2018-10-01 09:58:03.558'),(10,'1','abcd','2018-10-01 09:58:49.825','2018-10-01 09:58:49.825'),(11,'1','abcd','2018-10-01 09:59:00.452','2018-10-01 09:59:00.452'),(12,'1','abcd','2018-10-01 10:00:55.531','2018-10-01 10:00:55.531'),(13,'1','abcd','2018-10-01 10:01:00.961','2018-10-01 10:01:00.961'),(14,'1','abcd','2018-10-01 10:01:44.406','2018-10-01 10:01:44.406'),(15,'1','abcd','2018-10-01 10:02:09.652','2018-10-01 10:02:09.652'),(16,'1','abcd','2018-10-01 10:04:01.952','2018-10-01 10:04:01.952'),(17,'1','abcd','2018-10-01 10:10:09.252','2018-10-01 10:10:09.252'),(18,'1','abcd','2018-10-01 10:10:43.264','2018-10-01 10:10:43.264'),(19,'1','abcd','2018-10-01 10:11:09.693','2018-10-01 10:11:09.693'),(20,'1','abcd','2018-10-01 10:12:14.708','2018-10-01 10:12:14.708'),(21,'1','abcd','2018-10-01 10:14:10.881','2018-10-01 10:14:10.881'),(22,'1','abcd','2018-10-01 10:15:04.196','2018-10-01 10:15:04.196'),(23,'1','abcd','2018-10-01 10:17:50.243','2018-10-01 10:17:59.891'),(24,'1','abcd','2018-10-01 10:18:00.592','2018-10-01 10:18:07.954'),(25,'1','abcd','2018-10-01 10:20:21.898','2018-10-01 10:20:30.092'),(26,'1','abcd','2018-10-01 10:24:35.898','2018-10-01 10:24:42.920'),(27,'1','abcd','2018-10-01 10:25:58.949','2018-10-01 10:25:58.949'),(28,'1','abcd','2018-10-01 10:26:16.834','2018-10-01 10:26:16.834'),(29,'1','abcd','2018-10-01 10:27:07.228','2018-10-01 10:27:20.022'),(30,'1','abcd','2018-10-01 10:28:48.170','2018-10-01 10:28:49.766'),(31,'1','abcd','2018-10-01 10:29:16.401','2018-10-01 10:29:16.401'),(32,'1','abcd','2018-10-01 10:46:23.697','2018-10-01 10:46:29.856'),(33,'1','abcd','2018-10-01 10:49:38.098','2018-10-01 10:49:38.098'),(34,'1','abcd','2018-10-01 10:51:35.954','2018-10-01 10:51:35.954'),(35,'1','abcd','2018-10-01 10:52:24.910','2018-10-01 10:52:24.910'),(36,'1','abcd','2018-10-01 13:36:57.280','2018-10-01 13:36:57.280'),(37,'1','abcd','2018-10-01 13:37:34.005','2018-10-01 13:37:34.005'),(38,'1','abcd','2018-10-01 13:39:15.911','2018-10-01 13:39:15.911'),(39,'1','abcd','2018-10-01 15:08:45.795','2018-10-01 15:08:45.795'),(40,'1','abcd','2018-10-01 15:09:05.198','2018-10-01 15:09:05.198'),(41,'1','abcd','2018-10-01 15:12:29.723','2018-10-01 15:12:29.723'),(42,'1','abcd','2018-10-02 08:35:12.923','2018-10-02 08:35:12.923'),(43,'1','abcd','2018-10-03 10:07:10.146','2018-10-03 10:07:10.146'),(44,'1','abcd','2018-10-03 10:07:48.546','2018-10-03 10:07:48.546'),(45,'1','abcd','2018-10-03 10:11:02.146','2018-10-03 10:11:02.146'),(46,'1','abcd','2018-10-03 10:11:11.729','2018-10-03 10:11:11.729'),(47,'1','abcd','2018-10-03 10:11:59.064','2018-10-03 10:11:59.064'),(48,'1','abcd','2018-10-03 10:13:24.434','2018-10-03 10:13:24.434'),(49,'1','abcd','2018-10-03 10:15:51.242','2018-10-03 10:15:51.242'),(50,'1','abcd','2018-10-03 10:16:02.392','2018-10-03 10:16:02.392'),(51,'1','abcd','2018-10-03 10:17:21.390','2018-10-03 10:17:21.390'),(52,'1','abcd','2018-10-03 10:19:23.978','2018-10-03 10:19:23.978'),(53,'1','abcd','2018-10-03 10:19:32.841','2018-10-03 10:19:32.841'),(54,'1','abcd','2018-10-03 10:20:34.566','2018-10-03 10:20:34.566');
 /*!40000 ALTER TABLE `pump_controller_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +133,7 @@ CREATE TABLE `pump_settings` (
 
 LOCK TABLES `pump_settings` WRITE;
 /*!40000 ALTER TABLE `pump_settings` DISABLE KEYS */;
-INSERT INTO `pump_settings` VALUES (30);
+INSERT INTO `pump_settings` VALUES (3000);
 /*!40000 ALTER TABLE `pump_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +179,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pump_user`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `pump_controller_list` AS select `pump`.`pump_controller`.`id` AS `controller_id`,`pump`.`pump_controller`.`name` AS `name`,`session`.`id` AS `last_session_id`,`pump`.`pump_controller`.`imei` AS `imei`,`session`.`token` AS `token`,`session`.`session_active` AS `session_active`,`session`.`lasttime` AS `lasttime` from (`pump`.`pump_controller` left join (select `pcs`.`id` AS `id`,`pcs`.`controller_id` AS `controller_id`,`pcs`.`token` AS `token`,`pcs`.`lasttime` AS `lasttime`,((now(3) - `pcs`.`lasttime`) < (select `pump`.`pump_settings`.`session_expiration_time` from `pump`.`pump_settings`)) AS `session_active` from (`pump`.`pump_controller_session` `pcs` join (select `pump`.`pump_controller_session`.`controller_id` AS `controller_id`,max(`pump`.`pump_controller_session`.`lasttime`) AS `lasttime` from `pump`.`pump_controller_session` group by `pump`.`pump_controller_session`.`controller_id`) `last_sessions` on(((`pcs`.`controller_id` = `last_sessions`.`controller_id`) and (`pcs`.`lasttime` = `last_sessions`.`lasttime`))))) `session` on((`pump`.`pump_controller`.`id` = `session`.`controller_id`))) order by `pump`.`pump_controller`.`id`,`session`.`id` desc */;
+/*!50001 VIEW `pump_controller_list` AS select `pump`.`pump_controller`.`id` AS `controller_id`,`pump`.`pump_controller`.`name` AS `name`,`session`.`id` AS `last_session_id`,`pump`.`pump_controller`.`imei` AS `imei`,`session`.`token` AS `token`,`session`.`session_active` AS `session_active`,`session`.`lasttime` AS `lasttime` from (`pump`.`pump_controller` left join (select `pcs`.`id` AS `id`,`pcs`.`controller_id` AS `controller_id`,`pcs`.`token` AS `token`,`pcs`.`lasttime` AS `lasttime`,((timestampdiff(MICROSECOND,`pcs`.`lasttime`,now(3)) / 1000000) < (select `pump`.`pump_settings`.`session_expiration_time` from `pump`.`pump_settings`)) AS `session_active` from (`pump`.`pump_controller_session` `pcs` join (select `pump`.`pump_controller_session`.`controller_id` AS `controller_id`,max(`pump`.`pump_controller_session`.`lasttime`) AS `lasttime` from `pump`.`pump_controller_session` group by `pump`.`pump_controller_session`.`controller_id`) `last_sessions` on(((`pcs`.`controller_id` = `last_sessions`.`controller_id`) and (`pcs`.`lasttime` = `last_sessions`.`lasttime`))))) `session` on((`pump`.`pump_controller`.`id` = `session`.`controller_id`))) order by `pump`.`pump_controller`.`id`,`session`.`id` desc */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -189,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-03 17:28:26
+-- Dump completed on 2018-10-13 16:03:39

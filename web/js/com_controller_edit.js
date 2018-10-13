@@ -26,6 +26,8 @@ function ControllerEdit(timeout) {
                         return "Запись о контроллере отсутствует";
                     case 'controller_is_offline':
                         return "Связь с контроллером отсутствует";
+                    case 'controller_not_responds':
+                        return "Контроллер не отвечает";
                     default:
                         if (node.firstChild && node.firstChild.data )
                             return node.firstChild.data;
@@ -66,6 +68,7 @@ function ControllerEdit(timeout) {
 
     this.updateInfoRequest = function () {
         var controllerEditor = this;
+        controllerEditor.error_message.hide();
         $.get({
                 url: this.ajaxUrl,
                 data: {request: "get_controller_info", controller_id: controllerEditor.controllerId},
@@ -100,6 +103,7 @@ $(document).ready(function () {
 
     button.onclick = function()
     {
+
         controllerEdit.updateInfoRequest();
 
     }

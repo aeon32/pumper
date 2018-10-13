@@ -93,6 +93,27 @@ class BasicResponse extends  PumpMessageBase
 
 }
 
+/**
+ * Controller must to the command
+ */
+
+class PendingCommandResponse extends  BasicResponse
+{
+    public $command_id;
+
+    public function  __construct($type, $command_id)
+    {
+        parent::__construct($type);
+        $this->command_id = $command_id;
+
+    }
+
+    public function serialize()
+    {
+        return pack("CN", $this->getType(), $this->command_id);
+    }
+}
+
 
 function pumpProtocolMessageFromBytes($data)
 {

@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13a152ea-c90e-4004-883c-1b94149508ec" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../js/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../db/dump" beforeDir="false" afterPath="$PROJECT_DIR$/../db/dump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../emulator/controller_emul/pump_jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/controller_emul/pump_jobs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../emulator/pump_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/pump_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../emulator/test1" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/test1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration.ini" beforeDir="false" afterPath="$PROJECT_DIR$/configuration.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controlserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/controlserver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/mysqldb.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/mysqldb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/controllersession.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/controllersession.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/pumpcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/pumpcommandengine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/pumpprotocol.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/pumpprotocol.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/testcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/testcommandengine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controller_edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/com_controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controllers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,52 +27,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pumpcommandengine.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pumpcommandengine.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/framework/pumpcommandengine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="511">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysqldb.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mysqldb.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/framework/mysqldb.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+            <state relative-caret-position="220">
+              <caret line="112" selection-start-line="112" selection-end-line="112" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snmp_jobs.php" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/daemon/snmp_jobs.php">
+      <file leaf-file-name="configuration.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/configuration.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2370" />
+            <state relative-caret-position="105">
+              <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="daemon_worker.php" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/daemon/daemon_worker.php">
+      <file leaf-file-name="controllersession.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framework/controllersession.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-450" />
+            <state relative-caret-position="210">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="pumpprotocol.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/framework/pumpprotocol.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+            <state relative-caret-position="1890">
+              <caret line="131" column="5" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testcommandengine.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework/testcommandengine.php">
+      <file leaf-file-name="session.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framework/session.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="630">
-              <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+              <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -79,17 +84,8 @@
       <file leaf-file-name="controlserver.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controlserver.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
-              <caret line="120" column="71" selection-start-line="120" selection-start-column="71" selection-end-line="120" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller_editor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/controller_editor/controller_editor.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+            <state relative-caret-position="256">
+              <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -97,8 +93,17 @@
       <file leaf-file-name="ajax.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+            <state relative-caret-position="136">
+              <caret line="93" column="59" lean-forward="true" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="com_controller_edit.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="496">
+              <caret line="131" column="29" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -106,8 +111,8 @@
       <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/framework/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="158" selection-start-line="158" selection-end-line="158" />
+            <state relative-caret-position="190">
+              <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -138,7 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/configuration.ini" />
         <option value="$PROJECT_DIR$/framework/session.php" />
         <option value="$PROJECT_DIR$/controller.php" />
         <option value="$PROJECT_DIR$/pumpmanagement.php" />
@@ -148,23 +152,24 @@
         <option value="$PROJECT_DIR$/components/com_login/com_login.php" />
         <option value="$PROJECT_DIR$/components/com_main/com_main.php" />
         <option value="$PROJECT_DIR$/css/new_main.css" />
-        <option value="$PROJECT_DIR$/framework/controllersession.php" />
         <option value="$PROJECT_DIR$/framework/user.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/configuration.php" />
         <option value="$PROJECT_DIR$/site.php" />
         <option value="$PROJECT_DIR$/components/com_controllers/com_controllers.php" />
         <option value="$PROJECT_DIR$/components/controller_editor/controller_editor.php" />
         <option value="$PROJECT_DIR$/modules/mod_header/mod_header.php" />
-        <option value="$PROJECT_DIR$/framework/pumpprotocol.php" />
-        <option value="$PROJECT_DIR$/controlserver.php" />
         <option value="$PROJECT_DIR$/framework/testcommandengine.php" />
         <option value="$PROJECT_DIR$/js/com_controller_edit.js" />
-        <option value="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" />
-        <option value="$PROJECT_DIR$/framework/controller.php" />
-        <option value="$PROJECT_DIR$/ajax.php" />
-        <option value="$PROJECT_DIR$/framework/pumpcommandengine.php" />
         <option value="$PROJECT_DIR$/framework/mysqldb.php" />
+        <option value="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" />
+        <option value="$PROJECT_DIR$/configuration.php" />
+        <option value="$PROJECT_DIR$/configuration.ini" />
+        <option value="$PROJECT_DIR$/ajax.php" />
+        <option value="$PROJECT_DIR$/framework/pumpprotocol.php" />
+        <option value="$PROJECT_DIR$/controlserver.php" />
+        <option value="$PROJECT_DIR$/framework/controllersession.php" />
+        <option value="$PROJECT_DIR$/framework/controller.php" />
+        <option value="$PROJECT_DIR$/framework/pumpcommandengine.php" />
       </list>
     </option>
   </component>
@@ -180,18 +185,18 @@
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
-      <server host="localhost" id="9039bf19-da5d-4c04-a30a-bbd19c7bb448" name="localhost">
+      <server host="localhost" id="9039bf19-da5d-4c04-a30a-bbd19c7bb448" name="localhost" use_path_mappings="true">
         <path_mappings>
-          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html/pump" />
+          <mapping local-root="$PROJECT_DIR$" remote-root="/home/user/projects/pumping/web" />
         </path_mappings>
       </server>
     </servers>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-36" />
-    <option name="y" value="34" />
-    <option name="width" value="1480" />
-    <option name="height" value="949" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="300" />
+    <option name="y" value="110" />
+    <option name="width" value="1452" />
+    <option name="height" value="866" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -199,7 +204,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,25 +220,13 @@
               <item name="web" type="b2602c69:ProjectViewProjectNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="com_change_password" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="com_controller_edit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="com_controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="com_login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="com_main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web" type="b2602c69:ProjectViewProjectNode" />
@@ -245,28 +237,7 @@
             <path>
               <item name="web" type="b2602c69:ProjectViewProjectNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="framework" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="mod_header" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web" type="b2602c69:ProjectViewProjectNode" />
@@ -283,6 +254,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,20 +301,25 @@
       <workItem from="1538380519253" duration="17613000" />
       <workItem from="1538467514160" duration="10318000" />
       <workItem from="1538551607827" duration="14178000" />
+      <workItem from="1539413232798" duration="12051000" />
+      <workItem from="1539426441565" duration="1950000" />
+      <workItem from="1539428499894" duration="868000" />
+      <workItem from="1539430355482" duration="168000" />
+      <workItem from="1539430754266" duration="2952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120651000" />
+    <option name="totallyTimeSpent" value="138640000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-234" y="331" width="1480" height="949" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3111413" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23489584" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50475544" side_tool="true" visible="true" weight="0.3791866" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.32864583" side_tool="true" visible="true" weight="0.37860963" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -350,7 +327,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4988345" weight="0.32953104" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49524456" visible="true" weight="0.3791866" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.6713542" visible="true" weight="0.37860963" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -375,7 +352,7 @@
           <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="54" />
+      <option name="time" value="76" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="controlserver.php">
@@ -508,34 +485,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///var/www/html/wifi/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///var/www/html/wifi/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configuration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///var/www/html/wifi/login.php" />
+    <entry file="file:///var/www/html/wifi/index.php" />
     <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/framework/scheme.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="769">
@@ -571,9 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/framework/controllersession.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/com_controllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -581,13 +529,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -602,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="138" column="62" selection-start-line="138" selection-start-column="62" selection-end-line="138" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/com_controllers/com_controllers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-583">
@@ -616,76 +551,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/framework/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="46" column="20" lean-forward="true" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controlserver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="120" column="71" selection-start-line="120" selection-start-column="71" selection-end-line="120" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/framework/testcommandengine.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/framework/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
-        </state>
-      </provider>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/daemon/daemon_worker.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/components/controller_editor/controller_editor.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/daemon/snmp_jobs.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        <state relative-caret-position="330">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/framework/pumpprotocol.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
+        <state relative-caret-position="1890">
+          <caret line="131" column="5" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/daemon/snmp_jobs.php">
+    <entry file="file://$PROJECT_DIR$/framework/controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2370" />
+        <state relative-caret-position="190">
+          <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/daemon/daemon_worker.php">
+    <entry file="file://$PROJECT_DIR$/configuration.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/framework/pumpcommandengine.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="105">
+          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/framework/mysqldb.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
+        <state relative-caret-position="220">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="131" column="29" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/controllersession.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="93" column="59" lean-forward="true" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controlserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/pumpcommandengine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>

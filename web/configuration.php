@@ -24,11 +24,6 @@ class CConfig
 
     public $session_expire = 130;                 //время жизни сессии
 
-    //время между пакетами запросов к точкам доступа в мс
-    public $point_request_interval = 15000;
-
-    //время между обновлениями таблиц статистики в минутах
-    public $update_statistics_interval = 1;
 
 
     public function __construct()
@@ -54,11 +49,13 @@ class CConfig
             $this->database = NULL;
         };
 
-        if (array_key_exists('point_request_interval', $options)) {
-            $this->point_request_interval = $options['point_request_interval'];
-        }
         if (array_key_exists('session_name', $options)) {
             $this->session_name = $options['session_name'];
+        }
+
+        if (array_key_exists("command_timeout", $options))
+        {
+            $this->command_timeout = (int) $options["command_timeout"];
         }
 
     }

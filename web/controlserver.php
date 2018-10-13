@@ -89,7 +89,7 @@ class ControlServer
                 $this->testing_pump_command_engine  = new TestCommandEngine($this->database, $this->test_mode);
             };
 
-            $this->pump_command_engine = new PumpCommandEngine($this->database, $this->controllers_manager);
+            $this->pump_command_engine = new PumpCommandEngine($this->database, $this->controllers_manager, $this->options);
 
 
         } else {
@@ -222,6 +222,7 @@ function startApplication()
         $site->run();
         return $site;
     } catch (Exception $exc) {         //Если произошла ошибка создания ключевых объектов
+        print($exc->getMessage());
         http_response_code(500);
         die();
     };
