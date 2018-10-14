@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef33a982-4207-47ff-995a-80941eed87d1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/emulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/emulator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller_emul/pump_jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller_emul/pump_jobs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pump_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/pump_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1" beforeDir="false" afterPath="$PROJECT_DIR$/test1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller_emul/pump_protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller_emul/pump_protocol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/components/com_controller_edit/com_controller_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/components/com_controller_edit/com_controller_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/configuration.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../web/configuration.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/controlserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/controlserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/framework/pumpcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/framework/pumpcommandengine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/framework/pumpprotocol.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/framework/pumpprotocol.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/js/com_controller_edit.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,6 +18,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/emulator$Unittests_in_pump_protocol_tests_py.coverage" NAME="Unittests in pump_protocol_tests.py Coverage Results" MODIFIED="1538052030012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/emulator$pump_test.coverage" NAME="pump_test Coverage Results" MODIFIED="1539508141975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/emulator$Unittests_for_pump_protocol_tests_PumpProtocolTests_test_sendCommandTest1.coverage" NAME="Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest1 Coverage Results" MODIFIED="1538215893685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/emulator$Unittests_for_pump_protocol_tests_PumpProtocolTests_test_sendCommandTest.coverage" NAME="Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest Coverage Results" MODIFIED="1538055682306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/emulator$Unittests_for_pump_protocol_tests_PumpProtocolTests_test_sendCommandTest2.coverage" NAME="Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest2 Coverage Results" MODIFIED="1538387726998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -35,7 +29,7 @@
       <file leaf-file-name="pump_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pump_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
+            <state relative-caret-position="720">
               <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
               <folding>
                 <element signature="e#43#52#0" expanded="true" />
@@ -47,8 +41,8 @@
       <file leaf-file-name="pump_protocol_tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/pump_protocol_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="40" />
+            <state relative-caret-position="420">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="40" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -88,8 +82,8 @@
       <file leaf-file-name="pump_jobs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller_emul/pump_jobs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="90">
+              <caret line="31" column="38" lean-forward="true" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
               <folding>
                 <element signature="e#23#59#0" expanded="true" />
               </folding>
@@ -100,8 +94,8 @@
       <file leaf-file-name="pump_protocol.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller_emul/pump_protocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+            <state relative-caret-position="370">
+              <caret line="81" column="79" selection-start-line="81" selection-start-column="79" selection-end-line="81" selection-end-column="79" />
               <folding>
                 <element signature="e#23#32#0" expanded="true" />
               </folding>
@@ -112,7 +106,7 @@
       <file leaf-file-name="queuedispatcher.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller_emul/queuedispatcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
+            <state relative-caret-position="1320">
               <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
               <folding>
                 <element signature="e#23#36#0" expanded="true" />
@@ -159,10 +153,10 @@
         <option value="$PROJECT_DIR$/controller_emul/__init__.py" />
         <option value="$PROJECT_DIR$/tests/globalsetup.py" />
         <option value="$PROJECT_DIR$/tests/testssetup.py" />
-        <option value="$PROJECT_DIR$/controller_emul/pump_protocol.py" />
         <option value="$PROJECT_DIR$/tests/pump_protocol_tests.py" />
         <option value="$PROJECT_DIR$/pump_test.py" />
         <option value="$PROJECT_DIR$/controller_emul/pump_jobs.py" />
+        <option value="$PROJECT_DIR$/controller_emul/pump_protocol.py" />
       </list>
     </option>
   </component>
@@ -175,9 +169,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="213" />
-    <option name="y" value="30" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="33" />
+    <option name="y" value="104" />
     <option name="width" value="1390" />
     <option name="height" value="823" />
   </component>
@@ -187,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,12 +202,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -228,7 +222,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest2">
+  <component name="RunManager" selected="Python.pump_test">
     <configuration name="pump_protocol_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="emulator" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -248,6 +242,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="pump_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="emulator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pump_test.py" />
+      <option name="PARAMETERS" value="-u &quot;http://localhost/pump/&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Unittests for pump_protocol_tests.PumpProtocolTests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="emulator" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -260,20 +273,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;pump_protocol_tests.PumpProtocolTests&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="emulator" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;pump_protocol_tests.PumpProtocolTests.test_sendCommandTest&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest1" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -305,19 +304,19 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest" />
+      <item itemvalue="Python.pump_protocol_tests" />
+      <item itemvalue="Python.pump_test" />
       <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest2" />
       <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest1" />
       <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests" />
-      <item itemvalue="Python.pump_protocol_tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pump_test" />
         <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest2" />
         <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest1" />
         <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests" />
         <item itemvalue="Python.pump_protocol_tests" />
-        <item itemvalue="Python tests.Unittests for pump_protocol_tests.PumpProtocolTests.test_sendCommandTest" />
       </list>
     </recent_temporary>
   </component>
@@ -367,7 +366,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="213" y="30" width="1390" height="823" extended-state="0" />
+    <frame x="-4" y="0" width="1928" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -377,13 +376,13 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.24894515" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25179857" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18072917" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4127907" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4117647" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -406,8 +405,13 @@
           <url>file://$PROJECT_DIR$/controller_emul/pump_jobs.py</url>
           <line>1</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/controller_emul/pump_jobs.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -794,7 +798,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller_emul/queuedispatcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
+        <state relative-caret-position="1320">
           <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
           <folding>
             <element signature="e#23#36#0" expanded="true" />
@@ -807,7 +811,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pump_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="720">
           <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
           <folding>
             <element signature="e#43#52#0" expanded="true" />
@@ -817,8 +821,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/pump_protocol_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="40" />
+        <state relative-caret-position="420">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="40" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -827,8 +831,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller_emul/pump_jobs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="90">
+          <caret line="31" column="38" lean-forward="true" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
           <folding>
             <element signature="e#23#59#0" expanded="true" />
           </folding>
@@ -837,8 +841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller_emul/pump_protocol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        <state relative-caret-position="370">
+          <caret line="81" column="79" selection-start-line="81" selection-start-column="79" selection-end-line="81" selection-end-column="79" />
           <folding>
             <element signature="e#23#32#0" expanded="true" />
           </folding>

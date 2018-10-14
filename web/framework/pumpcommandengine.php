@@ -157,12 +157,30 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 
     }
 
+    private function _sendInfoRequest($request)
+    {
+        $session = $this->controllerManager->getSessionByToken($request->getToken(), true);
+        $command_id = $request->getCommandId();
+        $this->dbdriver->simpleExec("LOCK TABLES $this->commands_table WRITE");
+        $test_query = $this->dbdriver->exec("UPDATE $this->commands_table SET result=1 
+                                              WHERE id = $command_id AND session_id=$session->id ");
+                                              
+
+        $this->dbdriver->simpleExec("UNLOCK TABLES");
+
+    }
+
     public function processRequest($request)
     {
         switch($request->getType())
         {
             case PumpMessageConsts::$COMMAND_CHECK_REQUEST:
                 return $this->_checkCommandRequest($request);
+                break;
+
+            case PumpMessageConsts::$SEND_INFO_REQUEST:
+                $this->_sendInfoRequest($request);
+                return "";
                 break;
         };
 

@@ -11,6 +11,7 @@ abstract class PumpMessageConsts
     public static $COMMAND_CHECK_REQUEST = 0x30;
     public static $NO_COMMAND_RESPONSE = 0x31; //nothing to do
     public static $GET_INFO_RESPONSE = 0x32;   //controller must return information
+    public static $SEND_INFO_REQUEST = 0x33;   //controller return information about self
 
 
 }
@@ -52,7 +53,7 @@ class PumpMessageBase
 
 class BasicRequest extends  PumpMessageBase
 {
-    private static $MAX_TOKEN_SIZE = 20;
+    protected static $MAX_TOKEN_SIZE = 20;
     protected $token;
 
     public function __construct($type, $token)
@@ -79,6 +80,70 @@ class BasicRequest extends  PumpMessageBase
     }
 
 }
+
+
+class SendInfoRequest extends  BasicRequest
+{
+
+    private $commandId;
+    public function __construct($type, $token, $commandId)
+    {
+        parent::__construct($type, $token);
+        $this->commandId = $commandId;
+
+
+    }
+
+    public function getCommandId()
+    {
+        return $this->commandId;
+
+    }
+
+    static public  function deserialize($type, $data)
+    {
+        if (!is_string($data))
+            return null;
+
+
+
+        $offset = 0;
+        $len = strlen($data);
+        $commandId = null;
+        $token = null;
+
+        $mailformed = false;
+        if ($len > $offset + 4)
+        {
+            $commandId = unpack("N", substr($data, $offset, 4))[1];
+        } else {
+            $mailformed = true;
+        };
+
+        $offset += 4;
+
+        if (!$mailformed && $len >= $offset + 1 && ($len - $offset) < BasicRequest::$MAX_TOKEN_SIZE )
+        {
+            $token = substr($data, $offset, $len - $offset);
+
+        } else {
+
+            $mailformed = true;
+        };
+
+        $res = null;
+        if (!$mailformed)
+        {
+            $res = new  SendInfoRequest($type, $token, $commandId);
+
+        };
+
+        return $res;
+
+    }
+
+}
+
 
 
 
@@ -141,8 +206,14 @@ function pumpProtocolMessageFromBytes($data)
         {
             case  PumpMessageConsts::$COMMAND_CHECK_REQUEST :
                 $res = BasicRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
+                break;
+
+            case PumpMessageConsts::$SEND_INFO_REQUEST:
+                $res = SendInfoRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
+                break;
 
         };
+
 
 
     };

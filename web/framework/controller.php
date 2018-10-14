@@ -51,7 +51,7 @@ class ControllersManager
 
     private $controllers;
     private $list_loaded = false;
-    private $sessions;
+    private $last_sessions;
 
 
     public function __construct($dbdriver, $options)
@@ -62,7 +62,7 @@ class ControllersManager
         $this->controller_list_view = $options['prefix'] . 'controller_list';
         $this->controller_session_table = $options['prefix'] . 'controller_session';
         $this->controllers = array();
-        $this->sessions = array();
+        $this->last_sessions = array();
     }
 
 

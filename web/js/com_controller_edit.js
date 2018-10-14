@@ -48,6 +48,7 @@ function ControllerEdit(timeout) {
             this.error_message.hide();
             var node=jqXHR.documentElement;
 
+
         } else
         {
             this.error_message.text(error);
