@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13a152ea-c90e-4004-883c-1b94149508ec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../emulator/controller_emul/pump_protocol.py" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/controller_emul/pump_protocol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/pumpcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/pumpcommandengine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/pumpprotocol.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/pumpprotocol.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controller_edit.js" afterDir="false" />
-    </list>
+    <list default="true" id="13a152ea-c90e-4004-883c-1b94149508ec" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +14,8 @@
       <file leaf-file-name="pumpcommandengine.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/framework/pumpcommandengine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-944">
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            <state relative-caret-position="-554">
+              <caret line="99" column="38" lean-forward="true" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -298,16 +290,15 @@
       <workItem from="1539428499894" duration="868000" />
       <workItem from="1539430355482" duration="168000" />
       <workItem from="1539430754266" duration="3086000" />
-      <workItem from="1539501225884" duration="5899000" />
+      <workItem from="1539501225884" duration="6209000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144673000" />
+    <option name="totallyTimeSpent" value="144983000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1044" extended-state="7" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23489584" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -320,7 +311,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4988345" weight="0.32953104" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.67083335" visible="true" weight="0.37860963" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.67083335" weight="0.37860963" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -637,8 +628,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/framework/pumpcommandengine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-944">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="-554">
+          <caret line="99" column="38" lean-forward="true" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
         </state>
       </provider>
     </entry>
