@@ -5,7 +5,8 @@
       <paths name="pump">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/pump/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/ajax.php" web="/ajax.php" />
           </mappings>
         </serverdata>
       </paths>

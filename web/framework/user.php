@@ -53,6 +53,24 @@ class CUser
      */
     private $userinfo = NULL;
 
+
+    /**
+     * @param $database
+     * @param $options
+     * Функция возвращает true, если есть активные залогиненные сессии
+     */
+
+    static public function haveActiveUserSessions($database, &$options)
+    {
+        $users_table = $options['prefix'] . 'user';
+        $expiration = $options['session_expire'];
+        $query_text = "SELECT TRUE FROM $users_table WHERE TIMESTAMPDIFF(MICROSECOND, lasttime, NOW(3) )/1000000  < $expiration LIMIT 1";
+        $query = $database->exec($query_text);
+        return ($query->num_rows() > 0);
+
+
+    }
+
     /**
      * Конструктор класса. На основании данных сессии и cookie пытается восстановить информацию о текущем пользователе.
      * Создаётся в CSite в единственном виде;
@@ -83,6 +101,7 @@ class CUser
     {
         if ($this->session->get("cr_user_authorized_status", self::NON_AUTHORIZED) == self::AUTHORIZED) {                //Если данные не содержатся в сессионных переменных
             $this->loadFromDB();
+            $this->updateLastTime();
         } else {
             $this->session->set("cr_user_authorized_status", self::NON_AUTHORIZED);
             $this->session->set("cr_user_id", NULL);
@@ -108,6 +127,19 @@ class CUser
     public function getUserId()
     {
         return $this->session->get('cr_user_id', NULL);
+    }
+
+    private function updateLastTime()
+    {
+        if ($this->session->get("cr_user_authorized_status", self::NON_AUTHORIZED) == self::AUTHORIZED)
+        {
+            $user_id = (int)$this->getUserId();
+            $users = $this->users_table;
+            $query = $this->database->exec("UPDATE $users SET lasttime=NOW(3) WHERE id=$user_id");
+
+        }
+
+
     }
 
     /**
@@ -241,6 +273,7 @@ class CUser
             $this->session->set('cr_user_id', $row[0]);  //сохранили идентификатор пользователя  в сессионных переменных (?)
             $this->session->set('cr_user_authorized_status', self::AUTHORIZED);
             //$this->loadFromDB();                        //Загружаем информацию пользователя
+            $this->updateLastTime();
         } else {
             $this->session->set('cr_user_authorized_status', self::ERROR_LOGIN);
             $this->error_login = true;

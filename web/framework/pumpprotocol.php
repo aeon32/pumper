@@ -12,10 +12,61 @@ abstract class PumpMessageConsts
     public static $NO_COMMAND_RESPONSE = 0x31; //nothing to do
     public static $GET_INFO_RESPONSE = 0x32;   //controller must return information
     public static $SEND_INFO_REQUEST = 0x33;   //controller return information about self
+    public static $SWITCH_TO_MONITORING_MODE_RESPONSE = 0x34; //controller must switch for full monitoring mode response
+    public static $COMMAND_CHECK_WITH_INFO_REQUEST = 0x35;   //check command with full monitoring info
 
 
 }
 
+/**   Controller monitoring info
+ *    uint32_t    pressure;    //current pressure
+ *    bool is_working;         //is controller working
+ *    uint8_t currentValve;    //current valve opened
+ *    uint8_t currentStep;     //current step
+ *
+ */
+class MonitoringInfo
+{
+    public $pressure;
+    public $is_working;
+    public $current_valve;
+    public $current_step;
+
+    private static $structFMT = "Npressure/Cis_working/Ccurrent_value/Ccurrent_step";
+    private static $structFMTSize = 7;
+
+    public function __construct($pressure, $is_working, $current_valve, $current_step)
+    {
+        $this->pressure = $pressure;
+        $this->is_working = $is_working;
+        $this->current_valve = $current_valve;
+        $this->current_step = $current_step;
+    }
+
+    static public function getStructFMT()
+    {
+        return MonitoringInfo::$structFMT;
+    }
+
+    static public function getStructFMTSize()
+    {
+        return MonitoringInfo::$structFMTSize;
+    }
+
+    static public function deserialize($data)
+    {
+        if (is_string($data) && strlen($data) == MonitoringInfo::$structFMTSize) {
+            $unpacked = unpack(MonitoringInfo::$structFMT, $data);
+
+            return new MonitoringInfo($unpacked["pressure"], $unpacked["is_working"] != 0, $unpacked["current_value"], $unpacked["current_step"]);
+        }
+        else
+            return null;
+
+    }
+
+
+}
 
 
 class PumpMessageBase
@@ -39,7 +90,9 @@ class PumpMessageBase
     }
 
 
-};
+}
+
+;
 
 /**
  *  Basic request from controlServer
@@ -47,11 +100,10 @@ class PumpMessageBase
  *  struct BasicRequest
  *  {
  *    uint8_t messageType; //one of PumpMessageCodes
- *    char token[];      //tokenSize
+ *    char token[];        //tokenSize
  * }
-**/
-
-class BasicRequest extends  PumpMessageBase
+ **/
+class BasicRequest extends PumpMessageBase
 {
     protected static $MAX_TOKEN_SIZE = 20;
     protected $token;
@@ -70,9 +122,9 @@ class BasicRequest extends  PumpMessageBase
 
     }
 
-    static public  function deserialize($type, $data)
+    static public function deserialize($type, $data)
     {
-        if (is_string($data) && strlen($data) <= BasicRequest::$MAX_TOKEN_SIZE )
+        if (is_string($data) && strlen($data) <= BasicRequest::$MAX_TOKEN_SIZE)
             return new BasicRequest($type, $data);
         else
             return null;
@@ -82,16 +134,15 @@ class BasicRequest extends  PumpMessageBase
 }
 
 
-class SendInfoRequest extends  BasicRequest
+class SendInfoRequest extends BasicRequest
 {
 
     private $commandId;
+
     public function __construct($type, $token, $commandId)
     {
         parent::__construct($type, $token);
         $this->commandId = $commandId;
-
-
     }
 
     public function getCommandId()
@@ -100,11 +151,10 @@ class SendInfoRequest extends  BasicRequest
 
     }
 
-    static public  function deserialize($type, $data)
+    static public function deserialize($type, $data)
     {
         if (!is_string($data))
             return null;
-
 
 
         $offset = 0;
@@ -113,8 +163,7 @@ class SendInfoRequest extends  BasicRequest
         $token = null;
 
         $mailformed = false;
-        if ($len > $offset + 4)
-        {
+        if ($len > $offset + 4) {
             $commandId = unpack("N", substr($data, $offset, 4))[1];
         } else {
             $mailformed = true;
@@ -122,8 +171,7 @@ class SendInfoRequest extends  BasicRequest
 
         $offset += 4;
 
-        if (!$mailformed && $len >= $offset + 1 && ($len - $offset) < BasicRequest::$MAX_TOKEN_SIZE )
-        {
+        if (!$mailformed && $len >= $offset + 1 && ($len - $offset) < BasicRequest::$MAX_TOKEN_SIZE) {
             $token = substr($data, $offset, $len - $offset);
 
         } else {
@@ -132,8 +180,7 @@ class SendInfoRequest extends  BasicRequest
         };
 
         $res = null;
-        if (!$mailformed)
-        {
+        if (!$mailformed) {
             $res = new  SendInfoRequest($type, $token, $commandId);
 
         };
@@ -144,10 +191,74 @@ class SendInfoRequest extends  BasicRequest
 
 }
 
+/**
+ * Class SendMonitoringInfoRequest
+ * Returns breef monitoring info from controller
+ * Format:
+ *  struct SendMonitoringInfoRequest
+ *  {
+ *    uint8_t     messageType; //one of PumpMessageCodes::$SWITCH_TO_MONITORING_MODE_RESPONSE
+ *    uint32_t    pressure;    //current pressure
+ *    bool is_working;         //is controller working
+ *    uint8_t currentValve;    //current valve opened
+ *    uint8_t currentStep;     //current step
+ *    char token[];        //tokenSize
+ * }
+ *
+ */
+class SendMonitoringInfoRequest extends BasicRequest
+{
+    private $monitoringInfo = null;
+
+    public function __construct($type, $monitoringInfo, $token)
+    {
+        parent::__construct($type, $token);
+        $this->monitoringInfo = $monitoringInfo;
+    }
 
 
+    static public function deserialize($type, $data)
+    {
+        if (!is_string($data))
+            return null;
 
-class BasicResponse extends  PumpMessageBase
+
+        $offset = 0;
+        $len = strlen($data);
+        $monitoring_info = null;
+        $token = null;
+
+        $mailformed = false;
+        if ($len > $offset + MonitoringInfo::getStructFMTSize()) {
+            $monitoring_info = MonitoringInfo::deserialize( substr($data, $offset, MonitoringInfo::getStructFMTSize() ));
+        } else {
+            $mailformed = true;
+        };
+
+        $offset += MonitoringInfo::getStructFMTSize();
+
+        if (!$mailformed && $len >= $offset + 1 && ($len - $offset) < BasicRequest::$MAX_TOKEN_SIZE) {
+            $token = substr($data, $offset, $len - $offset);
+
+        } else {
+
+            $mailformed = true;
+        };
+
+        $res = null;
+        if (!$mailformed) {
+            $res = new  SendMonitoringInfoRequest($type, $monitoring_info, $token);
+
+        };
+
+        return $res;
+
+
+    }
+}
+
+
+class BasicResponse extends PumpMessageBase
 {
 
     public function __construct($type)
@@ -161,12 +272,11 @@ class BasicResponse extends  PumpMessageBase
 /**
  * Controller must to the command
  */
-
-class PendingCommandResponse extends  BasicResponse
+class PendingCommandResponse extends BasicResponse
 {
     public $command_id;
 
-    public function  __construct($type, $command_id)
+    public function __construct($type, $command_id)
     {
         parent::__construct($type);
         $this->command_id = $command_id;
@@ -193,17 +303,14 @@ function pumpProtocolMessageFromBytes($data)
 
     //extract messageType
     $t = is_string($data);
-    if (is_string($data) && $len >= $offset + 1)
-    {
+    if (is_string($data) && $len >= $offset + 1) {
         $messageType = ord($data[0]);
     } else
         $mailfomed = true;
 
     $offset += 1;
-    if (!$mailfomed)
-    {
-        switch ($messageType)
-        {
+    if (!$mailfomed) {
+        switch ($messageType) {
             case  PumpMessageConsts::$COMMAND_CHECK_REQUEST :
                 $res = BasicRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
                 break;
@@ -212,18 +319,20 @@ function pumpProtocolMessageFromBytes($data)
                 $res = SendInfoRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
                 break;
 
-        };
+            case PumpMessageConsts::$COMMAND_CHECK_WITH_INFO_REQUEST:
+                $res = SendMonitoringInfoRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
+                break;
 
+
+        };
 
 
     };
     return $res;
 
 
+}
 
-
-
-
-};
+;
 
 ?>

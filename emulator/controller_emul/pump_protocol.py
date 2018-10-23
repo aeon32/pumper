@@ -48,15 +48,44 @@ class ControllerInfoCommand(PumpMessageCommandWithId):
         return res
 
 
+class CheckCommandRequest(PumpMessageBase):
+    def __init__(self, type, token):
+        super().__init__(type)
+        self.token = token
 
+    def serialize(self):
+        fmt = "B"
+        res = struct.pack(fmt, self.type) + self.token
+        return res
+ #
+ #    uint32_t    pressure;    //current pressure
+ #    bool is_working;         //is controller working
+ #    uint8_t currentValve;    //current valve opened
+ #    uint8_t currentStep;     //current step
+
+class CheckCommandWithInfoRequest(PumpMessageBase):
+    def __init__(self, type, token, pressure, is_working, current_valve, current_step):
+        super().__init__(type)
+        self.token = token
+
+        self.pressure = pressure
+        self.is_working = is_working
+        self.current_valve = current_valve
+        self.current_step = current_step
+
+    def serialize(self):
+        fmt = "!BIBBB"
+        return struct.pack(fmt, self.type, self.pressure, self.is_working, self.current_valve, self.current_step) + self.token
 
 class PumpProtocol (object) :
 
     MESSAGE_TYPE = controller_emul.enum.enum(
         PUMP_COMMAND_CHECK = 0x30,
-        NO_COMMAND_RESPONSE = 0x31,  #nothing to do
-        GET_INFO_RESPONSE = 0x32,    #controller must return information
-        SEND_INFO_REQUEST = 0x33     #send info
+        NO_COMMAND_RESPONSE = 0x31,   #nothing to do
+        GET_INFO_RESPONSE = 0x32,     #controller must return information
+        SEND_INFO_REQUEST = 0x33,     #send info
+        SWITCH_TO_MONITORING_MODE_RESPONSE = 0x34,
+        COMMAND_CHECK_WITH_INFO_REQUEST=0x35
 
     )
 
@@ -81,6 +110,8 @@ class PumpProtocol (object) :
             if struct.calcsize(fmt) == len(data):
                 res = PumpMessageCommandWithId(type, struct.unpack(fmt, data)[0])
 
+        elif type == self.MESSAGE_TYPE.SWITCH_TO_MONITORING_MODE_RESPONSE :
+            res = PumpMessageBase(type)
 
         return res
 
@@ -116,13 +147,9 @@ class PumpProtocol (object) :
 
 
     def send_check_command_request(self, token):
-        message = bytearray()
-        message += struct.pack('B', self.MESSAGE_TYPE.PUMP_COMMAND_CHECK)
+        command = CheckCommandRequest(self.MESSAGE_TYPE.PUMP_COMMAND_CHECK, token)
 
-        if len(token):
-            message += token
-
-        return self.send_command_request(message)
+        return self.send_command_request(command.serialize())
 
 
 

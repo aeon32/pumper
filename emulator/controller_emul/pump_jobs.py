@@ -9,45 +9,40 @@ class CheckCommandJob(controller_emul.queuedispatcher.Job):
 
 
 
-    def __init__(self, pumpProtocol, period, token):
+    def __init__(self, pumpProtocol, deviceEmulator):
         controller_emul.queuedispatcher.Job.__init__(self)
         self.pumpProtocol = pumpProtocol
         self.setNextTryStamp(time.time())
         self.logger = logging.getLogger(controller_emul.config.LOGGER_NAME)
-        self.period = period
-        self.token = token
+        self.token = deviceEmulator.token
 
         self.needSendInfo = False
+        self.needSendMonitoring = False
         self.lastCommandId = None
+        self.deviceEmulator = deviceEmulator
 
 
     def process(self):
-        timeInterval = self.period
+        timeInterval = self.deviceEmulator.basePeriod
+        currentTime = time.time()
 
         if self.job_state == self.JOB_STATE.JOB_ADDED:
             self.job_state = self.JOB_STATE.JOB_PROCESS
 
         if self.job_state == self.JOB_STATE.JOB_PROCESS:
-            if self.needSendInfo:
-                self.needSendInfo = False
-                self.pumpProtocol.send_controller_info(self.lastCommandId, self.token, None)
-            else:
-                command = self.pumpProtocol.send_check_command_request(self.token)
-                if command:
-                    self.handle_command(command)
-                    if self.needSendInfo:
-                        timeInterval = self.period / 2  #Answer emulation is faster
+            command = self.deviceEmulator.get_command(currentTime)
+            response = None
 
 
-        self.setNextTryStamp(time.time() + self.period)
+            if command:
+                response = self.pumpProtocol.send_command_request(command.serialize())
+
+            if response:
+                self.deviceEmulator.handle_command(response)
+
+            timeInterval = self.deviceEmulator.get_interval()
 
 
-    def handle_command(self, command):
-        if command.type == controller_emul.pump_protocol.PumpProtocol.MESSAGE_TYPE.GET_INFO_RESPONSE:
-            self.logger.debug("Get info command")
-            self.lastCommandId = command.id
-            self.needSendInfo = True
+        self.setNextTryStamp(time.time() + timeInterval)
 
 
-        pass
-    

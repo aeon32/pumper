@@ -75,6 +75,7 @@ class ControlServer
         {
             ini_set('display_errors', 1);
             error_reporting(E_ALL ^ E_NOTICE);
+            ini_set('html_errors', false);
         };
 
         if ($this->options["database"]) {       //типа если всё проинсталировано...

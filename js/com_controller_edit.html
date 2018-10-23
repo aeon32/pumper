@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="KeyWor" content="text/html; charset=utf-8">
+    <meta name="Keywords" content="Контроллер продувки">
+    <meta name="Description" content="Управление контроллером">
+    <!-- meta <pre class='xdebug-var-dump' dir='ltr'>
+<small>/home/user/projects/pumping/web/index.php:21:</small>
+<b>array</b> <i>(size=2)</i>
+  0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'controller'</font> <i>(length=10)</i>
+  1 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'1'</font> <i>(length=1)</i>
+</pre> -->
+    <!-- base href="http://localhost/pump/" -->
+
+
+    <title>Управление контроллером</title>
+    <link rel="stylesheet" href="css/new_main.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/com_controller_edit.js"></script>
+    <!--[if lte IE 7]>
+    <style type="text/css">
+        .btr_b {
+            padding-left: 5px;
+        }
+    </style><![endif]-->
+</head>
+
+<body>
+<div class="container">
+         
+	<div class="head">
+    	<a href="http://localhost/pump/schemes/" id="logo"></a>
+        <ul id="MenuBar1">
+          <li><a href="http://localhost/pump/%D1%81ontrollers/">Контроллеры</a></li>
+          <li><a href="http://localhost/pump/change_password/">Смена пароля</a></li>
+          <li><a href="http://localhost/pump/monitoring_management/">Настройки</a></li>
+        </ul>
+        <a href="http://localhost/pump/login/?action=logout" id="enter">Выход</a>
+        <div id="strip"></div>
+    </div>
+
+            
+        <div class="content">
+            <div class="header_div">
+                <h1>Управление контроллером</h1>
+            </div>
+            <div id="error_message">Ошибка обновления информации</div>
+            <form name="admin_table" id="admin_table" method="post" action="">
+                <input id="basename" value="http://localhost/pump/" type="hidden">
+                <input id="refresh_settings_button" value="Обновить" type="button">
+                 <input type="hidden" id="controller_id" value="1" />
+            </form>
+
+            
+        </div>
+        
+        
+    <div class="footer">
+        <p>Copyright ...</p>
+    </div>
+</div>
+
+
+
+
+</body></html>

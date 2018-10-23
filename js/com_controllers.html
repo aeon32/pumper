@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" slick-uniqueid="3"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="KeyWor" content="text/html; charset=utf-8">
+    <meta name="Keywords" content="Управление продувкой">
+    <meta name="Description" content="Описание страницы">
+    <!-- meta <pre class='xdebug-var-dump' dir='ltr'>
+<small>/home/user/projects/pumping/web/index.php:21:</small>
+<b>array</b> <i>(size=1)</i>
+  0 <font color='#888a85'>=&gt;</font> <small>string</small> <font color='#cc0000'>'main'</font> <i>(length=4)</i>
+</pre> -->
+    <!-- base href="http://localhost/pump/" -->
+
+
+    <title>Управление продувкой</title>
+    <link rel="stylesheet" href="css/new_main.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/com_controllers.js"></script>
+    <!--[if lte IE 7]>
+    <style type="text/css">
+        .btr_b {
+            padding-left: 5px;
+        }
+    </style><![endif]-->
+</head>
+
+<body>
+<div class="container">
+         
+	<div class="head">
+    	<a href="http://localhost/pump/schemes/" id="logo"></a>
+        <ul id="MenuBar1">
+          <li><a href="http://localhost/pump/%D1%81ontrollers/">Контроллеры</a></li>
+          <li><a href="http://localhost/pump/change_password/">Смена пароля</a></li>
+          <li><a href="http://localhost/pump/monitoring_management/">Настройки</a></li>
+        </ul>
+        <a href="http://localhost/pump/login/?action=logout" id="enter">Выход</a>
+
+	<div id="strip"></div>
+       </div>
+    <div class="content">	
+  <div class="header_div">
+    <h1>Контроллеры</h1>
+    <form name="adminForm" method="post" action="#">
+	<input id="accept_but" value="Добавить" type="button">
+	<input id="recycle_but" value="Удалить" type="button">
+    </form>
+  </div>
+
+<div id="error_message">Ошибка обновления информации</div>
+<form name="admin_table" id="admin_table" method="post" action="">
+<input name="action" id="action" value="accept" type="hidden">
+<input type="hidden" id="basename" value="http://localhost/pump/"/>
+<table id="controllers_table" class="list_table" width="100%">
+	<tbody><tr>
+		<th class="td_small">#</th>
+		<th class="td_small">&nbsp;</th>
+		<th class="td_big">Название</th>
+        <th class="td_small"></th>
+
+	</tr>
+
+	       <tr>
+	        <td class="td_small">1</td>
+			<td class="td_small"><input id="a1" name="selected1" type="checkbox"></td>
+			<td class="td_big"><a href="http://localhost/pump/scheme_edit/1/">Контроллер 1</a></td>
+			<td class="td_small"><img src="images/off.png"></td>
+			
+		</tr>
+	       <tr class="polos_tr">
+	        <td class="td_small">2</td>
+			<td class="td_small"><input id="a2" name="selected2" type="checkbox"></td>
+			<td class="td_big"><a href="http://localhost/pump/scheme_edit/2/">Контроллер 2</a></td>
+			<td class="td_small"><img src="images/off.png"></td>
+			
+		</tr>
+	       <tr>
+	        <td class="td_small">3</td>
+			<td class="td_small"><input id="a3" name="selected3" type="checkbox"></td>
+			<td class="td_big"><a href="http://localhost/pump/scheme_edit/3/">abcd</a></td>
+			<td class="td_small"><img src="images/off.png"></td>
+			
+		</tr>
+
+		</tbody></table>
+</form>
+</div>
+
+
+    <div class="footer">
+        <p>Copyright ...</p>
+    </div>
+</div>
+
+
+
+
+</body></html>

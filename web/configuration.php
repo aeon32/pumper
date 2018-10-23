@@ -51,12 +51,18 @@ class CConfig
 
         if (array_key_exists('session_name', $options)) {
             $this->session_name = $options['session_name'];
-        }
+        };
 
         if (array_key_exists("command_timeout", $options))
         {
             $this->command_timeout = (int) $options["command_timeout"];
-        }
+        };
+
+        if (array_key_exists("session_expire", $options))
+        {
+            $this->session_expire = (int) $options["session_expire"];
+        };
+
 
     }
 

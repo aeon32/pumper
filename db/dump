@@ -28,7 +28,7 @@ CREATE TABLE `pump_controller` (
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Время создания записи',
   `imei` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `pump_controller` (
 
 LOCK TABLES `pump_controller` WRITE;
 /*!40000 ALTER TABLE `pump_controller` DISABLE KEYS */;
-INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-01 09:41:02','abcd');
+INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-01 09:41:02','abcd'),(6,'\0\0\0abcd','2018-10-23 08:14:58','\0\0\0abcd');
 /*!40000 ALTER TABLE `pump_controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `pump_controller_command` (
   `result` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_pump_controller_command_session_id` (`session_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +66,7 @@ CREATE TABLE `pump_controller_command` (
 
 LOCK TABLES `pump_controller_command` WRITE;
 /*!40000 ALTER TABLE `pump_controller_command` DISABLE KEYS */;
+INSERT INTO `pump_controller_command` VALUES (20,590,50,'2018-10-22 08:03:52.097',1,1);
 /*!40000 ALTER TABLE `pump_controller_command` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +104,7 @@ CREATE TABLE `pump_controller_session` (
   PRIMARY KEY (`id`),
   KEY `idx_pump_controller_session_controller_id` (`controller_id`),
   KEY `idx_pump_controller_session_lasttime` (`lasttime`)
-) ENGINE=MyISAM AUTO_INCREMENT=590 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=599 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,6 +113,7 @@ CREATE TABLE `pump_controller_session` (
 
 LOCK TABLES `pump_controller_session` WRITE;
 /*!40000 ALTER TABLE `pump_controller_session` DISABLE KEYS */;
+INSERT INTO `pump_controller_session` VALUES (598,'6','\0\0\0abcd','2018-10-23 08:14:58.076','2018-10-23 08:15:33.046'),(597,'1','abcd','2018-10-23 08:14:57.066','2018-10-23 08:35:46.185');
 /*!40000 ALTER TABLE `pump_controller_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,6 +150,7 @@ CREATE TABLE `pump_user` (
   `id` int(11) NOT NULL,
   `login` varchar(200) DEFAULT NULL COMMENT 'Логин пользователя',
   `password` char(32) DEFAULT NULL COMMENT 'Пароль. Вычисляется как md5(login.password)',
+  `lasttime` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT 'Время доступа',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -158,7 +161,7 @@ CREATE TABLE `pump_user` (
 
 LOCK TABLES `pump_user` WRITE;
 /*!40000 ALTER TABLE `pump_user` DISABLE KEYS */;
-INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72');
+INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2018-10-23 08:22:30.215');
 /*!40000 ALTER TABLE `pump_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-13 16:03:39
+-- Dump completed on 2018-10-23 11:36:00

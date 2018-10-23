@@ -7,7 +7,7 @@
  */
 
 require_once("pumpprotocol.php");
-
+require_once("user.php");
 
 
 class CommandResult
@@ -56,10 +56,14 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 
     public function __construct($dbdriver, $controllerManager, $options)
     {
+
+        $test = MonitoringInfo::getStructFMTSize();
         $this->dbdriver = $dbdriver;
         $this->controllerManager = $controllerManager;
         $this->commands_table = $options['prefix'] . 'controller_command';
         $this->options = $options;
+
+
 
     }
 
@@ -144,14 +148,28 @@ class PumpCommandEngine extends  PumpCommandEngineBase
     }
 
 
+    private function _saveControllerMonitoringInfo($session, $request)
+    {
+
+
+    }
 
     private function _checkCommandRequest($request)
     {
         $session = $this->controllerManager->getSessionByToken($request->getToken(), true);
         $response = $this->_getPendingCommand($session);
 
+        if ($request->getType() == PumpMessageConsts::$COMMAND_CHECK_WITH_INFO_REQUEST)
+        {
+            $this->_saveControllerMonitoringInfo($session, $request);
+
+        }
+
         if (is_null($response))
-            $response = (new BasicResponse(PumpMessageConsts::$NO_COMMAND_RESPONSE));
+        {
+            $has_active_session = CUser::haveActiveUserSessions($this->dbdriver, $this->options);
+            $response = (new BasicResponse($has_active_session ? PumpMessageConsts::$SWITCH_TO_MONITORING_MODE_RESPONSE  : PumpMessageConsts::$NO_COMMAND_RESPONSE ));
+        }
 
         return $response->serialize();
 
@@ -175,6 +193,9 @@ class PumpCommandEngine extends  PumpCommandEngineBase
         switch($request->getType())
         {
             case PumpMessageConsts::$COMMAND_CHECK_REQUEST:
+                return $this->_checkCommandRequest($request);
+                break;
+            case PumpMessageConsts::$COMMAND_CHECK_WITH_INFO_REQUEST:
                 return $this->_checkCommandRequest($request);
                 break;
 

@@ -16,12 +16,15 @@ import controller_emul.queuedispatcher
 import controller_emul.enum
 import controller_emul.config
 import controller_emul.pump_jobs
+import controller_emul.device_emulator
 
 ##s
 
-def test1(queueDispatcher, pumpProtocol, token):
+def test1(queueDispatcher, pumpProtocol,  deviceEmulator):
 
-    checkCommandJob = controller_emul.pump_jobs.CheckCommandJob(pumpProtocol, 1, token)
+
+
+    checkCommandJob = controller_emul.pump_jobs.CheckCommandJob(pumpProtocol, deviceEmulator)
 
     queueDispatcher.push_job(checkCommandJob)
 
@@ -63,10 +66,10 @@ def main(argv):
 
         logger.debug("URL : %s", url)
 
-
+        deviceEmulator = controller_emul.device_emulator.DeviceEmulator('abcd'.encode("latin-1"), 2)
         queueDispatcher = controller_emul.queuedispatcher.QueueDispatcher()
         pumpProtocol = controller_emul.pump_protocol.PumpProtocol(url)
-        test1(queueDispatcher, pumpProtocol, 'abcd'.encode("latin-1"))
+        test1(queueDispatcher, pumpProtocol, deviceEmulator )
 
 
 

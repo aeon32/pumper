@@ -102,11 +102,6 @@ function getControllerInfo($database, $options, $controller_id)
 
     }
 
-
-
-
-
-
 }
 
 
@@ -128,6 +123,7 @@ try {
         $database = new CMySQLDriver($options);
         $session = new CSession($options);
         $user = new CUser($database, $session, $options);
+        $user->tryToAuthorize();
     };
 
     if (!$options["debug"] && (!$user || !$user->getAuthorized())) {

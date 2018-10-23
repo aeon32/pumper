@@ -62,7 +62,7 @@ class com_controllers extends AbstractComponent
                 </form>
             </div>
 
-
+            <div id="error_message">Ошибка обновления информации</div>
             <form name="admin_table" id="admin_table" method="post" action="">
                 <input type="hidden" name="action" id="action" value="accept"/>
                 <input type="hidden" id="basename" value="<?php print($this->site->getBaseName()); ?>"/>
