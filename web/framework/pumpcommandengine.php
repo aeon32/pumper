@@ -75,23 +75,25 @@ class PumpCommandEngine extends  PumpCommandEngineBase
         if ($timeout == 0)
             $timeout = 1;
 
-        $this->dbdriver->simpleExec("LOCK TABLES $this->commands_table WRITE");
-        $test_query = $this->dbdriver->exec("SELECT id, command_type FROM $this->commands_table 
+        try {
+            $this->dbdriver->exec("LOCK TABLES $this->commands_table WRITE");
+            $test_query = $this->dbdriver->exec("SELECT id, command_type FROM $this->commands_table 
                                               WHERE session_id= $session->id AND NOT processed  AND NOW(3) - createtime < $timeout
                                               ORDER BY id LIMIT 1");
 
-        $res = null;
-        if ($test_query->num_rows())
-        {
-            $row = $test_query->getRow(0);
-            $command_type = $row[1];
-            $command_id = $row[0];
-            $res = new PendingCommandResponse($command_type, $command_id);
-            $this->dbdriver->exec("UPDATE $this->commands_table SET processed = TRUE WHERE id=$command_id");
+            $res = null;
+            if ($test_query->num_rows()) {
+                $row = $test_query->getRow(0);
+                $command_type = $row[1];
+                $command_id = $row[0];
+                $res = new PendingCommandResponse($command_type, $command_id);
+                $this->dbdriver->exec("UPDATE $this->commands_table SET processed = TRUE WHERE id=$command_id");
 
 
-        }
-        $this->dbdriver->simpleExec("UNLOCK TABLES");
+            }
+        } finally {
+            $this->dbdriver->simpleExec("UNLOCK TABLES");
+        };
         return $res;
 
     }
@@ -150,6 +152,8 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 
     private function _saveControllerMonitoringInfo($session, $request)
     {
+       //request has type SendMonitoringInfoRequest
+        $this->controllerManager->saveControllerMonitoringInfo($session, $request->monitoringInfo);
 
 
     }

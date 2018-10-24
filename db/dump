@@ -27,6 +27,8 @@ CREATE TABLE `pump_controller` (
   `name` varchar(200) DEFAULT NULL COMMENT 'Наименование контроллера',
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Время создания записи',
   `imei` varchar(50) DEFAULT NULL,
+  `last_session_id` int(11) DEFAULT NULL COMMENT 'Идентификатор последней сессии',
+  `last_monitoring_info_id` int(11) DEFAULT NULL COMMENT 'Идентификатор последнего состояния контроллера',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +39,7 @@ CREATE TABLE `pump_controller` (
 
 LOCK TABLES `pump_controller` WRITE;
 /*!40000 ALTER TABLE `pump_controller` DISABLE KEYS */;
-INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-01 09:41:02','abcd');
+INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-24 13:02:50','abcd',3,20);
 /*!40000 ALTER TABLE `pump_controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +59,7 @@ CREATE TABLE `pump_controller_command` (
   `result` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_pump_controller_command_session_id` (`session_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +68,6 @@ CREATE TABLE `pump_controller_command` (
 
 LOCK TABLES `pump_controller_command` WRITE;
 /*!40000 ALTER TABLE `pump_controller_command` DISABLE KEYS */;
-INSERT INTO `pump_controller_command` VALUES (20,590,50,'2018-10-22 08:03:52.097',1,1);
 /*!40000 ALTER TABLE `pump_controller_command` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,8 +86,43 @@ SET character_set_client = utf8;
  1 AS `imei`,
  1 AS `token`,
  1 AS `session_active`,
- 1 AS `lasttime`*/;
+ 1 AS `lasttime`,
+ 1 AS `monitoring_info_id`,
+ 1 AS `monitoring_time`,
+ 1 AS `monitoring_info_actual`,
+ 1 AS `pressure`,
+ 1 AS `is_working`,
+ 1 AS `current_valve`,
+ 1 AS `current_step`*/;
 SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `pump_controller_monitoring_info`
+--
+
+DROP TABLE IF EXISTS `pump_controller_monitoring_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pump_controller_monitoring_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор записи',
+  `session_id` int(11) NOT NULL COMMENT 'Идентификатор cессии',
+  `createtime` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT 'Время записи',
+  `pressure` int(11) DEFAULT NULL COMMENT 'Текущее давление',
+  `is_working` tinyint(1) DEFAULT '0' COMMENT 'Продувка в работе ?',
+  `current_valve` smallint(6) DEFAULT NULL COMMENT 'Текущий клапан',
+  `current_step` smallint(6) DEFAULT NULL COMMENT 'Номер прохода',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pump_controller_monitoring_info`
+--
+
+LOCK TABLES `pump_controller_monitoring_info` WRITE;
+/*!40000 ALTER TABLE `pump_controller_monitoring_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pump_controller_monitoring_info` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `pump_controller_session`
@@ -104,7 +140,7 @@ CREATE TABLE `pump_controller_session` (
   PRIMARY KEY (`id`),
   KEY `idx_pump_controller_session_controller_id` (`controller_id`),
   KEY `idx_pump_controller_session_lasttime` (`lasttime`)
-) ENGINE=MyISAM AUTO_INCREMENT=601 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +149,6 @@ CREATE TABLE `pump_controller_session` (
 
 LOCK TABLES `pump_controller_session` WRITE;
 /*!40000 ALTER TABLE `pump_controller_session` DISABLE KEYS */;
-INSERT INTO `pump_controller_session` VALUES (600,'1','abcd','2018-10-23 08:40:08.176','2018-10-23 08:41:32.708');
 /*!40000 ALTER TABLE `pump_controller_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +170,7 @@ CREATE TABLE `pump_settings` (
 
 LOCK TABLES `pump_settings` WRITE;
 /*!40000 ALTER TABLE `pump_settings` DISABLE KEYS */;
-INSERT INTO `pump_settings` VALUES (3000);
+INSERT INTO `pump_settings` VALUES (25);
 /*!40000 ALTER TABLE `pump_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +196,7 @@ CREATE TABLE `pump_user` (
 
 LOCK TABLES `pump_user` WRITE;
 /*!40000 ALTER TABLE `pump_user` DISABLE KEYS */;
-INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2018-10-23 10:50:38.556');
+INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2018-10-24 13:19:46.853');
 /*!40000 ALTER TABLE `pump_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +217,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pump_user`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `pump_controller_list` AS select `pump`.`pump_controller`.`id` AS `controller_id`,`pump`.`pump_controller`.`name` AS `name`,`session`.`id` AS `last_session_id`,`pump`.`pump_controller`.`imei` AS `imei`,`session`.`token` AS `token`,`session`.`session_active` AS `session_active`,`session`.`lasttime` AS `lasttime` from (`pump`.`pump_controller` left join (select `pcs`.`id` AS `id`,`pcs`.`controller_id` AS `controller_id`,`pcs`.`token` AS `token`,`pcs`.`lasttime` AS `lasttime`,((timestampdiff(MICROSECOND,`pcs`.`lasttime`,now(3)) / 1000000) < (select `pump`.`pump_settings`.`session_expiration_time` from `pump`.`pump_settings`)) AS `session_active` from (`pump`.`pump_controller_session` `pcs` join (select `pump`.`pump_controller_session`.`controller_id` AS `controller_id`,max(`pump`.`pump_controller_session`.`lasttime`) AS `lasttime` from `pump`.`pump_controller_session` group by `pump`.`pump_controller_session`.`controller_id`) `last_sessions` on(((`pcs`.`controller_id` = `last_sessions`.`controller_id`) and (`pcs`.`lasttime` = `last_sessions`.`lasttime`))))) `session` on((`pump`.`pump_controller`.`id` = `session`.`controller_id`))) order by `pump`.`pump_controller`.`id`,`session`.`id` desc */;
+/*!50001 VIEW `pump_controller_list` AS select `pump_controller`.`id` AS `controller_id`,`pump_controller`.`name` AS `name`,`pump_controller`.`last_session_id` AS `last_session_id`,`pump_controller`.`imei` AS `imei`,`pcs`.`token` AS `token`,((now(3) - `pcs`.`lasttime`) < (select `pump_settings`.`session_expiration_time` from `pump_settings`)) AS `session_active`,`pcs`.`lasttime` AS `lasttime`,`pcmi`.`id` AS `monitoring_info_id`,`pcmi`.`createtime` AS `monitoring_time`,((now(3) - `pcmi`.`createtime`) < (select `pump_settings`.`session_expiration_time` from `pump_settings`)) AS `monitoring_info_actual`,`pcmi`.`pressure` AS `pressure`,`pcmi`.`is_working` AS `is_working`,`pcmi`.`current_valve` AS `current_valve`,`pcmi`.`current_step` AS `current_step` from ((`pump_controller` left join `pump_controller_session` `pcs` on((`pcs`.`id` = `pump_controller`.`last_session_id`))) left join `pump_controller_monitoring_info` `pcmi` on(((`pcmi`.`id` = `pump_controller`.`last_monitoring_info_id`) and (`pcmi`.`session_id` = `pcs`.`id`)))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -196,4 +231,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 18:11:05
+-- Dump completed on 2018-10-24 16:19:53

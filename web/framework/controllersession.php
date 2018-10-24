@@ -13,6 +13,7 @@ class ControllerSession {
     public $controller;
     public $active = false;
 
+
     public function __construct($id,$token,$controller, $active) {
         $this->id = $id;
         $this->token = $token;

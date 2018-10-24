@@ -61,6 +61,7 @@ class ControllersManager
         $this->controller_table = $options['prefix'] . 'controller';
         $this->controller_list_view = $options['prefix'] . 'controller_list';
         $this->controller_session_table = $options['prefix'] . 'controller_session';
+        $this->controller_monitoring_info_table = $options['prefix'] . 'controller_monitoring_info';
         $this->controllers = array();
         $this->last_sessions = array();
     }
@@ -126,18 +127,10 @@ class ControllersManager
         if ($need_load) {
             $driver = $this->database;
             $query = $driver->exec(
-                "SELECT name, session.id, session.token, session.lasttime, TIMESTAMPDIFF(MICROSECOND, session.lasttime, NOW(3) )/1000000  < (SELECT session_expiration_time FROM pump_settings) AS section_active 
-                 FROM $this->controller_table
-                 LEFT JOIN
-                  (
-                    SELECT pcs.id AS id, pcs.token, pcs.controller_id, pcs.lasttime
-                    FROM $this->controller_session_table as pcs
-                    WHERE controller_id = $id
-                    ORDER BY pcs.lasttime DESC
-                    LIMIT 1
-                   ) as session
-                   ON TRUE
-                  WHERE $this->controller_table.id=$id");
+                 "SELECT name, pcs.id, pcs.token, pcs.lasttime,TIMESTAMPDIFF(MICROSECOND, pcs.lasttime, NOW(3) )/1000000  < (SELECT session_expiration_time FROM pump_settings) AS section_active   
+                  FROM $this->controller_table
+	              LEFT JOIN $this->controller_session_table as pcs ON pcs.id = pump_controller.last_session_id
+                  WHERE pump_controller.id = $id");
             if ($query->num_rows()) {
                 $row = $query->getRow(0);
                 $controller->name = $row[0];
@@ -160,6 +153,34 @@ class ControllersManager
 
         };
         return $controller;
+    }
+
+    public function saveControllerMonitoringInfo($session, $monitoringInfo)
+    {
+        $driver=$this->database;
+
+        try {
+            $driver->exec("LOCK TABLES $this->controller_table WRITE, $this->controller_monitoring_info_table WRITE");
+
+
+            $query = $driver->exec("INSERT INTO $this->controller_monitoring_info_table 
+                               (session_id, createtime, pressure, is_working, current_valve, current_step )
+                                VALUES($session->id, NOW(3), $monitoringInfo->pressure, $monitoringInfo->is_working,
+                                       $monitoringInfo->current_valve, $monitoringInfo->current_step 
+                                      )"
+            );
+            $insert_id = $query->insert_id();
+            $controller_id = $session->controller->id;
+            $query = $driver->exec("UPDATE $this->controller_table SET last_monitoring_info_id = $insert_id WHERE id=$controller_id");
+        } finally
+        {
+            $driver->simpleExec("UNLOCK TABLES");
+
+        }
+
+
+
+
     }
 
     public function createController($imei) {
@@ -187,9 +208,11 @@ class ControllersManager
                                );
         $insert_id = $query->insert_id();
 
+        $query = $driver->exec("UPDATE $this->controller_table SET last_session_id = $insert_id WHERE id=$controller->id");
+
         $session = new ControllerSession($insert_id, $token, $controller, true);
         $controller->session = $session;
-        return $controller;
+        return $session;
 
     }
 
@@ -197,6 +220,7 @@ class ControllersManager
         $driver=$this->database;
 
         $query = $driver->exec("UPDATE $this->controller_session_table SET lasttime = NOW(3) WHERE id=$session->id");
+
 
     }
 
@@ -211,14 +235,17 @@ class ControllersManager
     {
         $driver = $this->site->getDBDriver();
         $name = $driver->escapeString($controller->name);
+        try
+        {
 
+            $driver->exec("LOCK TABLES $this->controller_table WRITE");
+            $query = $driver->exec("UPDATE $this->controller_table SET name='$name' WHERE controller_id=$controller->id");
 
-        $driver->simpleExec("LOCK TABLES $this->controller_table WRITE");
-        $query = $driver->exec("UPDATE $this->controller_table SET name='$name' WHERE controller_id=$controller->id");
-
-        if ($return_saved)
-            $new_controller = $this->getInfo($controller->id);
-        $driver->simpleExec("UNLOCK TABLES");
+            if ($return_saved)
+                $new_controller = $this->getInfo($controller->id);
+        } finally {
+            $driver->simpleExec("UNLOCK TABLES");
+        };
         if ($return_saved)
             return $new_controller;
     }
@@ -238,36 +265,36 @@ class ControllersManager
 
 
             $query = $driver->exec("
-				SELECT controller_id, name, imei, last_session_id, token,session_active, lasttime 
+				SELECT controller_id, name, imei, last_session_id, token,session_active, lasttime,
+				       monitoring_info_id, monitoring_time, monitoring_info_actual, 
+				       pressure, is_working, current_valve, current_step
 				FROM $controller_list
 			");
 
 
             for ($i = 0; $i < $query->num_rows(); $i++) {
-                $row = $query->getRow($i);
+                //$row = $query->getRow($i);
+                $row = $query->getRowAssoc($i);
                 $controller = null;
-                if (!array_key_exists($row[0], $this->controllers))
+                if (!array_key_exists($row["controller_id"], $this->controllers))
                 {
-                    $controller = new Controller($row[0], $row[1], $row[2]);
-                    $this->controllers[$row[0]] = $controller;
+                    $controller = new Controller($row["controller_id"], $row["name"], $row["imei"]);
+                    $this->controllers[$row["controller_id"]] = $controller;
                 } else {
-                    $controller = $this->controllers[ $row[0]];
+                    $controller = $this->controllers[ $row["controller_id"]];
 
                 }
 
-                if (!is_null($row[3]))
+                if (!is_null($row["last_session_id"]))
                 {
                     $online = false;
-                    if ($row[5])
+                    if ($row["session_active"])
                         $online = true;
 
-                    $controller->last_session = new ControllerSession($row[3], $row[4], $controller, $online);
-                    $this->last_sessions[ $row[4] ] = $controller->last_session;
+                    $controller->last_session = new ControllerSession($row["last_session_id"], $row["token"], $controller, $online);
+                    $this->last_sessions[ $row["token"] ] = $controller->last_session;
                     $controller->online = $online;
-
                 };
-
-
 
             }
             $this->list_loaded = true;
@@ -279,35 +306,32 @@ class ControllersManager
     {
         $this->getControllersList(); //load data
         $session = null;
-        if (array_key_exists( $token, $this->last_sessions) && $this->last_sessions[$token]->active)
-        {
-            $session = $this->last_sessions[$token];
-            $this->updateSession($session);
-
-        }  else
-        {
+        try {
             $this->database->simpleExec("LOCK TABLES $this->controller_table WRITE, $this->controller_session_table WRITE");
-            //token===imei (?)
-            //try to find controller
-            $findedController = null;
-            foreach ($this->controllers as &$controller)
-            {
-                if ($controller->imei === $token )
-                {
-                    $findedController = $controller;
-                    break;
+            if (array_key_exists($token, $this->last_sessions) && $this->last_sessions[$token]->active) {
+                $session = $this->last_sessions[$token];
+                $this->updateSession($session);
+
+            } else {
+                //token===imei (?)
+                //try to find controller
+                $findedController = null;
+                foreach ($this->controllers as &$controller) {
+                    if ($controller->imei === $token) {
+                        $findedController = $controller;
+                        break;
+                    }
                 }
-            }
-            if (!$findedController)
-                $findedController = $this->createController($token);
+                if (!$findedController)
+                    $findedController = $this->createController($token);
 
-            $session = $this->createSession($findedController, $token );
-
+                $session = $this->createSession($findedController, $token);
+            };
+        } finally
+        {
             $this->database->simpleExec("UNLOCK TABLES");
-
-
-
         };
+
         return $session;
 
     }
