@@ -235,19 +235,6 @@ background-color:#378888;
 }
 
 
-.wifi_symbol {
-background:url("../images/wifi.png") no-repeat scroll left top transparent;
-display:block;
-height:34px;
-left:0;
-margin-top:-34px;
-top:0;
-width:34px;
-position:relative;
-z-index:1000;
-cursor:pointer;
-}
-
 
 #access_point_editor {
 background-color:#FFFFFF;
@@ -519,9 +506,15 @@ background:url("../images/button_hover.png") no-repeat scroll center center tran
 .list_table .td_big {
   padding-top:7px; 
   padding-bottom:7px;
-
+  width:100px;
   text-align:left;
   padding-left:5px;
+}
+
+
+.list_table .td_terminal {
+  border:none;
+
 }
 
 .list_table .td_small {

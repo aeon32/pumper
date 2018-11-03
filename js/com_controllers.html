@@ -41,10 +41,6 @@
     <div class="content">	
   <div class="header_div">
     <h1>Контроллеры</h1>
-    <form name="adminForm" method="post" action="#">
-	<input id="accept_but" value="Добавить" type="button">
-	<input id="recycle_but" value="Удалить" type="button">
-    </form>
   </div>
 
 <div id="error_message">Ошибка обновления информации</div>
@@ -54,32 +50,35 @@
 <table id="controllers_table" class="list_table" width="100%">
 	<tbody><tr>
 		<th class="td_small">#</th>
-		<th class="td_small">&nbsp;</th>
 		<th class="td_big">Название</th>
-        <th class="td_small"></th>
-
+		<th class="td_small">Статус</th>
+		<th class="td_small">Давление</th>
+		<th class="td_small">Номер зоны/шаг</th>
 	</tr>
 
 	       <tr>
 	        <td class="td_small">1</td>
-			<td class="td_small"><input id="a1" name="selected1" type="checkbox"></td>
 			<td class="td_big"><a href="http://localhost/pump/scheme_edit/1/">Контроллер 1</a></td>
-			<td class="td_small"><img src="images/off.png"></td>
-			
+			   <td class="td_small">В работе</td>
+			   <td class="td_small">100МПа</td>
+			   <td class="td_small">1/2</td>
+
 		</tr>
 	       <tr class="polos_tr">
 	        <td class="td_small">2</td>
-			<td class="td_small"><input id="a2" name="selected2" type="checkbox"></td>
 			<td class="td_big"><a href="http://localhost/pump/scheme_edit/2/">Контроллер 2</a></td>
-			<td class="td_small"><img src="images/off.png"></td>
-			
+			 <td class="td_small">Простаивает</td>
+  		     <td class="td_small">200МПа</td>
+			 <td class="td_small">2/3</td>
+
 		</tr>
 	       <tr>
 	        <td class="td_small">3</td>
-			<td class="td_small"><input id="a3" name="selected3" type="checkbox"></td>
-			<td class="td_big"><a href="http://localhost/pump/scheme_edit/3/">abcd</a></td>
-			<td class="td_small"><img src="images/off.png"></td>
-			
+			<td class="td_big"><a href="http://localhost/pump/scheme_edit/3/">abcd</a></td>
+			   <td class="td_small">Недоступен</td>
+			   <td class="td_small">300МПа</td>
+			   <td class="td_small">4/6</td>
+
 		</tr>
 
 		</tbody></table>

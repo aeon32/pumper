@@ -1,5 +1,6 @@
 <?php
 require_once ("controllersession.php");
+require_once ("monitoringinfo.php");
 
 class Controller
 {
@@ -29,6 +30,8 @@ class ControllerLite
     public $imei;
     public $last_session;
     public $online;
+
+    public $monitoring_info;
 };
 
 
@@ -52,6 +55,7 @@ class ControllersManager
     private $controllers;
     private $list_loaded = false;
     private $last_sessions;
+    private $monitoring_info = NULL;
 
 
     public function __construct($dbdriver, $options)
@@ -295,6 +299,10 @@ class ControllersManager
                     $this->last_sessions[ $row["token"] ] = $controller->last_session;
                     $controller->online = $online;
                 };
+                if ($row["monitoring_info_actual"])
+                {
+                    $controller->monitoring_info = new MonitoringInfo($row["pressure"], $row["is_working"], $row["current_valve"], $row["current_step"]);
+                }
 
             }
             $this->list_loaded = true;
@@ -362,6 +370,8 @@ class ControllersManager
             $controllerLite->imei = $controller->imei;
             $controllerLite->last_session = is_object($controller->last_session ) ? $controller->last_session->id : null;
             $controllerLite->online = $controller->online;
+            $controllerLite->monitoring_info = $controller->monitoring_info;
+
             $res[] = $controllerLite;
 
         };

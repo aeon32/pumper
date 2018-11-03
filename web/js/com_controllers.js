@@ -30,30 +30,41 @@ function ControllersManagers(timeout) {
     this.controllers_table_body = $("#controllers_table")[0];
     this.error_message = $("#error_message");
 
+    this.updateRowAuxField = function (row)
+    {
+        if (! ('nameLink' in row ))
+        {
+            row.numberTD = $(row.cells[0]);
+            row.nameLink = $("a", row.cells[1]);
+
+            row.statusTD = $(row.cells[2]);
+            row.pressureTD =$(row.cells[3]);
+            row.zoneTD = $(row.cells[4]);
+        }
+    }
+
     this.controllersTableCreateRow = function(index)
     {
         var row = this.controllers_table_body.insertRow(index);
-        var numberRow = row.insertCell(0);
-        var checkBoxRow = row.insertCell(1);
-        var nameRow = row.insertCell(2);
-        var ledRow = row.insertCell(3);
-        numberRow.className = "td_small";
-        checkBoxRow.className = "td_small";
-        nameRow.className = "td_big";
-        ledRow.className = "td_small";
-
-        var checkBox = document.createElement("input");
-        checkBoxRow.appendChild(checkBox);
-        checkBox.type = "checkbox";
+        var numberTD = row.insertCell(0);
+        var nameTD = row.insertCell(1);
+        var statusTD = row.insertCell(2);
+        var pressureTD = row.insertCell(3);
+        var zoneTD = row.insertCell(4);
+        numberTD.className = "td_small";
+        nameTD.className = "td_big";
+        statusTD.className = "td_small";
+        pressureTD.className = "td_small";
+        zoneTD.className = "td_small";
 
         var nameLink = document.createElement("a");
-        nameRow.appendChild(nameLink);
-        var ledImage = document.createElement("img");
-        ledRow.appendChild(ledImage);
+        nameTD.appendChild(nameLink);
 
-        row.controllerCheckBox = checkBox;
-        row.nameLink = nameLink;
-        row.ledImage = ledImage;
+        row.nameLink = $(nameLink);
+        row.numberTD = $(numberTD);
+        row.statusTD = $(statusTD);
+        row.pressureTD = $(pressureTD);
+        row.zoneTD = $(zoneTD);
 
         return row;
 
@@ -84,16 +95,35 @@ function ControllersManagers(timeout) {
             var controller = controllerList[i];
             var row =  this.controllers_table_body.rows[i+1];
             row.className =  i %2 ? "polos_tr" : "";
+            this.updateRowAuxField(row);
 
-            var numberTD = row.cells[0];
-            var checkBox = $("input",row.cells[1]);
-            var nameLink = $("a", row.cells[2]);
-            var ledRow = $("img", row.cells[3]);
+            var numberTD = row.numberTD;
+            var nameLink = row.nameLink;
+
 
             $(numberTD).text(i+1);
             nameLink.text(controller.name);
             nameLink[0].href =  "controller/" + controller.id +"/";
-            ledRow[0].src = "images/" +  (controller.online ? "on.png" : "off.png" );
+
+            var statusText = "Неизвестен";
+            var pressure="";
+            var step = "";
+            if (controller.online && controller.monitoring_info !==null )
+            {
+                var monitoring_info = controller.monitoring_info;
+                statusText = monitoring_info.is_working ? "В работе" : "Простаивает";
+                pressure = controller.monitoring_info.pressure;
+                if (monitoring_info.is_working)
+                {
+                    step = monitoring_info.current_valve.toString() + "/" + monitoring_info.current_step.toString();
+                }
+
+            }
+            row.statusTD.text(statusText);
+            row.pressureTD.text(pressure);
+            row.zoneTD.text(step);
+
+
 
 
         }

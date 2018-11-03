@@ -50,16 +50,25 @@ class com_controllers extends AbstractComponent
         return "new_main.css";
     }
 
+    private function getReadableControllerStatus($controller)
+    {
+        $res = "Неизвестен";
+        if ($controller->online &&  !is_null($controller->monitoring_info))
+        {
+            $res = $controller->monitoring_info->is_working ? "В работе" : "Простаивает";
+
+        }
+        return $res;
+
+    }
+
+
     private function renderForm()
     {
         ?>
         <div class="content">
             <div class="header_div">
                 <h1>Контроллеры</h1>
-                <form name="adminForm" method="post" action="#">
-                    <input id="accept_but" type="button" value="Добавить"/>
-                    <input id="recycle_but" type="button" value="Удалить"/>
-                </form>
             </div>
 
             <div id="error_message">Ошибка обновления информации</div>
@@ -69,9 +78,10 @@ class com_controllers extends AbstractComponent
                 <table id="controllers_table" class="list_table" width="100%">
                     <tr>
                         <th class="td_small">#</th>
-                        <th class="td_small">&nbsp;</th>
                         <th class="td_big">Название</th>
-                        <th class="td_small"></th>
+                        <th class="td_small">Статус</th>
+                        <th class="td_small">Давление</th>
+                        <th class="td_small">Номер зоны/шаг</th>
 
                     </tr>
                     <?php
@@ -80,13 +90,21 @@ class com_controllers extends AbstractComponent
                     $polos = false;
                     foreach ($controllers as &$value) {
                         $class = $polos ? ' class="polos_tr" ' : NULL;
-                        $image = $value->online ? "images/on.png" : "images/off.png";
+                        $status = $this->getReadableControllerStatus($value);
+                        $actual_info = $value->online &&  !is_null($value->monitoring_info);
+                        $pressure = $actual_info ? $value->monitoring_info->pressure : "";
+                        $step = "";
+                        if ($actual_info && $value->monitoring_info->is_working)
+                            $step = $actual_info ? (string)$value->monitoring_info->current_valve."/".(string) $value->monitoring_info->current_step : "";
+
+
                         print("
 	       <tr $class>
 	        <td class=\"td_small\">$i</td>
-			<td class=\"td_small\"><input type=\"checkbox\" id=\"a$value->id\"  name=\"selected$value->id\" /></td>
 			<td class=\"td_big\"><a href=\"controller/$value->id/\">" . htmlspecialchars($value->name) . "</a></td>
-			<td class=\"td_small\"><img src=\"$image\" /></td>
+			<td class=\"td_small\">$status</td>
+			<td class=\"td_small\">$pressure</td>
+ 			<td class=\"td_small\">$step</td>			
 			
 		</tr>");
                         $polos = !$polos;
