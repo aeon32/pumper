@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4321a85-af03-439c-a469-49f2acaf1d48" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_controllers.html" beforeDir="false" afterPath="$PROJECT_DIR$/com_controllers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/com_controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controllers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/components/com_controllers/com_controllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/components/com_controllers/com_controllers.php" afterDir="false" />
-    </list>
+    <list default="true" id="e4321a85-af03-439c-a469-49f2acaf1d48" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -41,7 +35,7 @@
       <file leaf-file-name="com_controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/com_controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="112">
               <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
             </state>
           </provider>
@@ -123,9 +117,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="450" />
-    <option name="y" value="150" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="792" />
+    <option name="y" value="635" />
     <option name="width" value="1470" />
     <option name="height" value="854" />
   </component>
@@ -214,28 +208,28 @@
       <workItem from="1538488386609" duration="4918000" />
       <workItem from="1538551494103" duration="4057000" />
       <workItem from="1540197325023" duration="1536000" />
-      <workItem from="1541232977830" duration="6547000" />
+      <workItem from="1541232977830" duration="6988000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50749000" />
+    <option name="totallyTimeSpent" value="51190000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
+    <frame x="792" y="635" width="1470" height="854" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1765625" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23061225" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" visible="true" weight="0.3775401" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50068027" side_tool="true" visible="true" weight="0.4738255" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49947917" visible="true" weight="0.3775401" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49931973" visible="true" weight="0.4738255" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -560,7 +554,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/com_controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
+        <state relative-caret-position="112">
           <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
         </state>
       </provider>

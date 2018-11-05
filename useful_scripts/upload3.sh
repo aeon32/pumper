@@ -2,14 +2,15 @@
 
 currentdir=$(cd `dirname $0` && pwd)
 
-HOST="files.000webhost.com"
-USER="aeration2"
-PASS="25eTULGNmMQw"
+HOST="ftp.f0245646.xsph.ru"
+USER="f0245646"
+PASS="dunuehbibi"
 FTPURL="ftp://$USER:$PASS@$HOST"
 LCD="$currentdir/../web"
-RCD="public_html"
+RCD="domains/f0245646.xsph.ru/public_html/"
 #DELETE="--delete"
 lftp -c "set ftp:list-options -a;\
+set ftp:ssl-allow no;
 open '$FTPURL';\
 lcd $LCD;\
 cd $RCD;\

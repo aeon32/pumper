@@ -267,13 +267,18 @@ class ControllersManager
             $controller_table = $this->controller_table;
             $controller_list = $this->controller_list_view;
 
-
             $query = $driver->exec("
-				SELECT controller_id, name, imei, last_session_id, token,session_active, lasttime,
-				       monitoring_info_id, monitoring_time, monitoring_info_actual, 
-				       pressure, is_working, current_valve, current_step
-				FROM $controller_list
-			");
+              select pump_controller.id as controller_id,  name, pump_controller.imei as imei, last_session_id,  
+                     pcs.token,((now(3) - pcs.lasttime) < (select pump_settings.session_expiration_time from pump_settings)) AS session_active, pcs.lasttime,
+                     pcmi.id as monitoring_info_id, pcmi.createtime as monitoring_time,
+                     ((now(3) - pcmi.createtime) < (select pump_settings.session_expiration_time from pump_settings)) AS monitoring_info_actual,
+                     pcmi.pressure, pcmi.is_working, pcmi.current_valve, pcmi.current_step
+
+              from pump_controller
+                  left join pump_controller_session as pcs on pcs.id = last_session_id
+                  left join pump_controller_monitoring_info as pcmi on pcmi.id = pump_controller.last_monitoring_info_id and pcmi.session_id = pcs.id            
+            
+            ");
 
 
             for ($i = 0; $i < $query->num_rows(); $i++) {

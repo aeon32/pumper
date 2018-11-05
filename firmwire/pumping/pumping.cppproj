@@ -225,7 +225,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="base64.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="base64.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="consts.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pumpapplication.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pumpapplication.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pumpprotocol.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pumpprotocol.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

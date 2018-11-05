@@ -66,7 +66,7 @@ def main(argv):
 
         logger.debug("URL : %s", url)
 
-        deviceEmulator = controller_emul.device_emulator.DeviceEmulator('abcd'.encode("latin-1"), 2)
+        deviceEmulator = controller_emul.device_emulator.DeviceEmulator('862118025301703'.encode("latin-1"), 2)
         queueDispatcher = controller_emul.queuedispatcher.QueueDispatcher()
         pumpProtocol = controller_emul.pump_protocol.PumpProtocol(url)
         test1(queueDispatcher, pumpProtocol, deviceEmulator )

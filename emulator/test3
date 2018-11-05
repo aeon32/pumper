@@ -1,0 +1,7 @@
+#!/bin/bash
+
+currentdir=$(cd `dirname $0` && pwd)
+
+url="http://localhost/pump/controller/"
+
+python3 "$currentdir/pump_test.py" -u "http://f0245646.xsph.ru"
