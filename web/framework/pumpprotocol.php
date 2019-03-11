@@ -85,11 +85,23 @@ class BasicRequest extends PumpMessageBase
 
 }
 
+/**
+ * Class SendMonitoringInfoRequest
+ * Returns breef monitoring info from controller
+ * Format:
+ *  struct SendMonitoringInfoRequest
+ *  {
+ *    uint8_t     messageType; //one of PumpMessageCodes::$SWITCH_TO_MONITORING_MODE_RESPONSE
+ *    char token[];        //tokenSize
+ * }
+ *
+ */
 
 class SendInfoRequest extends BasicRequest
 {
 
     private $commandId;
+    public $pumpingTable = NULL;
 
     public function __construct($type, $token, $commandId)
     {

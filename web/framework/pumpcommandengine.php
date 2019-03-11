@@ -10,10 +10,11 @@ require_once("pumpprotocol.php");
 require_once("user.php");
 
 
-class CommandResult
+abstract class CommandResult
 {
 
 }
+
 
 class Command
 {
@@ -21,17 +22,51 @@ class Command
     public $type;  //one of PumpMessageConsts
 
     public $session_id;
+    public $command_result;
 
     public function __construct($id,$type, $session_id) {
         $this->id = $id;
         $this->type = $type;
         $this->session_id = $session_id;
+    }
+}
+
+class SendInfoRequestCommandResult extends  CommandResult
+{
+
+    public static function from_db($command, $dbdriver)
+    {
+        $table = $dbdriver->getPrefix()."controller_command_send_info_result";
+        //$query = "SELECT "
 
     }
 
-
 }
 
+class PumpCommandResultLoader
+{
+    public function __construct($dbdriver)
+    {
+        $this->dbdriver = $dbdriver;
+    }
+
+    public function getCommandResult($command)
+    {
+        $result = NULL;
+        switch ($command->type)
+        {
+            case PumpMessageConsts::$SEND_INFO_REQUEST:
+                $result = SendInfoRequestCommandResult::from_db($command, $this->dbdriver);
+
+
+
+        }
+        return $result;
+
+
+    }
+
+}
 
 abstract class PumpCommandEngineBase
 {
@@ -110,13 +145,15 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 
 
         $query = $this->dbdriver->exec("INSERT INTO $this->commands_table(session_id, command_type, createtime) VALUES($session_id, $command_type, NOW(3))");
-        $insert_id = $query->insert_id();
+        $command_id = $query->insert_id();
+
+        $command = new Command($command_id, $command_type, $session_id);
 
         $time = microtime(true);
         $command_result = NULL;
         do {
           usleep(1000 * 500);
-          $test_query = $this->dbdriver->exec("SELECT TRUE FROM $this->commands_table WHERE session_id= $session_id AND result IS NOT NULL");
+          $test_query = $this->dbdriver->exec("SELECT TRUE FROM $this->commands_table WHERE id= $command_id AND result IS NOT NULL");
           if ($test_query->num_rows())
           {
               $command_result = true;
@@ -205,7 +242,7 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 
             case PumpMessageConsts::$SEND_INFO_REQUEST:
                 $this->_sendInfoRequest($request);
-                return "";
+                return $this->_checkCommandRequest($request);
                 break;
         };
 
