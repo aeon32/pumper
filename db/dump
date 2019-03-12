@@ -30,7 +30,7 @@ CREATE TABLE `pump_controller` (
   `last_session_id` int(11) DEFAULT NULL COMMENT 'Идентификатор последней сессии',
   `last_monitoring_info_id` int(11) DEFAULT NULL COMMENT 'Идентификатор последнего состояния контроллера',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `pump_controller` (
 
 LOCK TABLES `pump_controller` WRITE;
 /*!40000 ALTER TABLE `pump_controller` DISABLE KEYS */;
-INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-24 13:02:50','abcd',3,20);
+INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-24 13:02:50','abcd',3,20),(7,'862118025301703','2019-03-11 15:11:16','862118025301703',16,611);
 /*!40000 ALTER TABLE `pump_controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,6 +69,28 @@ CREATE TABLE `pump_controller_command` (
 LOCK TABLES `pump_controller_command` WRITE;
 /*!40000 ALTER TABLE `pump_controller_command` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pump_controller_command` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pump_controller_command_send_info_result`
+--
+
+DROP TABLE IF EXISTS `pump_controller_command_send_info_result`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pump_controller_command_send_info_result` (
+  `command_id` int(11) NOT NULL COMMENT 'Идентификатор команды',
+  PRIMARY KEY (`command_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pump_controller_command_send_info_result`
+--
+
+LOCK TABLES `pump_controller_command_send_info_result` WRITE;
+/*!40000 ALTER TABLE `pump_controller_command_send_info_result` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pump_controller_command_send_info_result` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -122,6 +144,52 @@ CREATE TABLE `pump_controller_monitoring_info` (
 LOCK TABLES `pump_controller_monitoring_info` WRITE;
 /*!40000 ALTER TABLE `pump_controller_monitoring_info` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pump_controller_monitoring_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pump_controller_pumping_table`
+--
+
+DROP TABLE IF EXISTS `pump_controller_pumping_table`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pump_controller_pumping_table` (
+  `id` int(11) NOT NULL COMMENT 'Идентификатор таблицы продувки',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pump_controller_pumping_table`
+--
+
+LOCK TABLES `pump_controller_pumping_table` WRITE;
+/*!40000 ALTER TABLE `pump_controller_pumping_table` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pump_controller_pumping_table` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pump_controller_pumping_table_rows`
+--
+
+DROP TABLE IF EXISTS `pump_controller_pumping_table_rows`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pump_controller_pumping_table_rows` (
+  `pumping_table_id` int(11) NOT NULL COMMENT 'Идентификатор таблицы продувки',
+  `step_id` int(11) NOT NULL COMMENT 'Номер шага',
+  `valve` smallint(6) DEFAULT NULL COMMENT 'Номер клапана',
+  `time` smallint(6) DEFAULT NULL COMMENT 'Время продувки'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pump_controller_pumping_table_rows`
+--
+
+LOCK TABLES `pump_controller_pumping_table_rows` WRITE;
+/*!40000 ALTER TABLE `pump_controller_pumping_table_rows` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pump_controller_pumping_table_rows` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -196,7 +264,7 @@ CREATE TABLE `pump_user` (
 
 LOCK TABLES `pump_user` WRITE;
 /*!40000 ALTER TABLE `pump_user` DISABLE KEYS */;
-INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2018-10-24 13:19:46.853');
+INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2019-03-11 15:01:36.423');
 /*!40000 ALTER TABLE `pump_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,4 +299,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-24 16:19:53
+-- Dump completed on 2019-03-12 17:44:26
