@@ -92,10 +92,12 @@ class PumpCommandEngine extends  PumpCommandEngineBase
     public function __construct($dbdriver, $controllerManager, $options)
     {
 
-        $test = MonitoringInfo::getStructFMTSize();
         $this->dbdriver = $dbdriver;
         $this->controllerManager = $controllerManager;
         $this->commands_table = $options['prefix'] . 'controller_command';
+        $this->command_send_info_result_table = $options['prefix'].'controller_command_send_info_result';
+        $this->controller_pumping_table = $options['prefix'].'controller_pumping_table';
+        $this->controller_pumping_table_rows = $options['prefix'].'controller_pumping_table_rows';
         $this->options = $options;
 
 
@@ -220,12 +222,33 @@ class PumpCommandEngine extends  PumpCommandEngineBase
     {
         $session = $this->controllerManager->getSessionByToken($request->getToken(), true);
         $command_id = $request->getCommandId();
-        $this->dbdriver->simpleExec("LOCK TABLES $this->commands_table WRITE");
-        $test_query = $this->dbdriver->exec("UPDATE $this->commands_table SET result=1 
-                                              WHERE id = $command_id AND session_id=$session->id ");
-                                              
+        try {
+            $test_query = $this->dbdriver->exec("SELECT TRUE FROM $this->commands_table WHERE id = $command_id AND session_id= $session->id AND result IS NULL" );
 
-        $this->dbdriver->simpleExec("UNLOCK TABLES");
+            if ($test_query->num_rows() > 0)
+            {
+                $pumping_table_query = $this->dbdriver->exec("INSERT INTO $this->controller_pumping_table VALUES()");
+                $pumping_table_id = $pumping_table_query->insert_id();
+                $index = 0;
+                foreach ($request->pumpingTable->pumping_table as $pumping_table_row )
+                {
+                    $pumping_table_rows_query = $this->dbdriver->exec(
+                        "INSERT INTO $this->controller_pumping_table_rows(pumping_table_id, step_id, valve, time)
+                         VALUES ($pumping_table_id, $index, $pumping_table_row->valve_number, $pumping_table_row->time_to_run )"
+                    );
+                    $index++;
+
+                };
+                $this->dbdriver->exec("INSERT INTO $this->command_send_info_result_table (command_id, pumping_table_id)
+                    VALUES($command_id, $pumping_table_id)");
+                $this->dbdriver->exec("UPDATE $this->commands_table SET result=1 
+                                              WHERE id = $command_id AND session_id=$session->id ");
+
+            };
+
+        } finally {
+
+        };
 
     }
 
