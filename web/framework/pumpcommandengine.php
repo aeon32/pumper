@@ -200,7 +200,7 @@ class PumpCommandEngine extends  PumpCommandEngineBase
         $session = $this->controllerManager->getSessionByToken($request->getToken(), true);
         $response = $this->_getPendingCommand($session);
 
-        if ($request->getType() == PumpMessageConsts::$COMMAND_CHECK_WITH_INFO_REQUEST)
+        if ($request->getType() == PumpMessageConsts::$COMMAND_CHECK_WITH_BRIEF_INFO_REQUEST)
         {
             $this->_saveControllerMonitoringInfo($session, $request);
 
@@ -236,7 +236,7 @@ class PumpCommandEngine extends  PumpCommandEngineBase
             case PumpMessageConsts::$COMMAND_CHECK_REQUEST:
                 return $this->_checkCommandRequest($request);
                 break;
-            case PumpMessageConsts::$COMMAND_CHECK_WITH_INFO_REQUEST:
+            case PumpMessageConsts::$COMMAND_CHECK_WITH_BRIEF_INFO_REQUEST:
                 return $this->_checkCommandRequest($request);
                 break;
 

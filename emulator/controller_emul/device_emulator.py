@@ -20,6 +20,9 @@ class DeviceEmulator:
         self.currentValve = 20
         self.currentStep = 30
 
+        pumpTable = [ controller_emul.pump_protocol.PumpTableRow (1,5), controller_emul.pump_protocol.PumpTableRow (2,50) ]
+        self.fullControllingInfo = controller_emul.pump_protocol.ControllerInfo(pumpTable)
+
     # handle parsed command, switch device states
     def handle_command(self, command):
 
@@ -42,12 +45,16 @@ class DeviceEmulator:
         return time_interval
 
 
+
+
     def get_command(self, time):
         command = None
 
         if self.needSendInfo:
             command = controller_emul.pump_protocol.ControllerInfoCommand(
-                controller_emul.pump_protocol.PumpProtocol.MESSAGE_TYPE.SEND_INFO_REQUEST, self.lastCommandId, self.token
+                controller_emul.pump_protocol.PumpProtocol.MESSAGE_TYPE.SEND_INFO_REQUEST,
+                self.lastCommandId, self.token, self.fullControllingInfo
+
             )
             self.needSendInfo = False
         elif self.fullMonitoring:

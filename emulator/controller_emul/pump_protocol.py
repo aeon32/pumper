@@ -36,15 +36,31 @@ class PumpMessageCommandWithId (PumpMessageBase):
         return struct.pack(fmt, self.type, self.id)
 
 
+class PumpTableRow:
+    def __init__(self, valve, time_to_run):
+        self.valve = valve
+        self.time_to_run = time_to_run
+
+class ControllerInfo:
+    def __init__(self, pumpTable):
+        self.pumpTable = pumpTable
+        pass
+    def serialize(self):
+        fmt = "!B"
+        res = struct.pack(fmt, len(self.pumpTable))
+        for pumpTableRow in self.pumpTable:
+            res += struct.pack("!BI", pumpTableRow.valve, pumpTableRow.time_to_run )
+        return res
 
 class ControllerInfoCommand(PumpMessageCommandWithId):
-    def __init__ (self, type, id, token):
+    def __init__ (self, type, id, token, controllerInfo):
         super().__init__(type, id)
         self.token = token
+        self.controllerInfo = controllerInfo
 
     def serialize(self):
         fmt = "!BI"
-        res = struct.pack(fmt, self.type, self.id) + self.token
+        res = struct.pack(fmt, self.type, self.id) + self.controllerInfo.serialize() + self.token
         return res
 
 

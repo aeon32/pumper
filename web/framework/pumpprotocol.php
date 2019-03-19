@@ -6,6 +6,7 @@
  * Time: 17:41
  */
 require_once("monitoringinfo.php");
+require_once("pumpingtable.php");
 abstract class PumpMessageConsts
 {
     public static $COMMAND_CHECK_REQUEST = 0x30;
@@ -13,7 +14,7 @@ abstract class PumpMessageConsts
     public static $GET_INFO_RESPONSE = 0x32;   //controller must return information
     public static $SEND_INFO_REQUEST = 0x33;   //controller return information about self
     public static $SWITCH_TO_MONITORING_MODE_RESPONSE = 0x34; //controller must switch for full monitoring mode response
-    public static $COMMAND_CHECK_WITH_INFO_REQUEST = 0x35;   //check command with full monitoring info
+    public static $COMMAND_CHECK_WITH_BRIEF_INFO_REQUEST = 0x35;   //check command with brief (monitoring) info
 
 
 }
@@ -86,12 +87,18 @@ class BasicRequest extends PumpMessageBase
 }
 
 /**
- * Class SendMonitoringInfoRequest
+ * Class SendInfoRequest
  * Returns breef monitoring info from controller
  * Format:
  *  struct SendMonitoringInfoRequest
  *  {
- *    uint8_t     messageType; //one of PumpMessageCodes::$SWITCH_TO_MONITORING_MODE_RESPONSE
+ *    uint8_t     messageType; //one of PumpMessageCodes:: consts
+ *    uint32_t    commandId
+ *    uint8_t     pumpingTableRowCount (number of steps)
+ *    ...
+ *    uint8_t     valve_number
+ *    uint32_t    time_to_run
+ *    ... //pumpingTableRowCount steps
  *    char token[];        //tokenSize
  * }
  *
@@ -103,10 +110,11 @@ class SendInfoRequest extends BasicRequest
     private $commandId;
     public $pumpingTable = NULL;
 
-    public function __construct($type, $token, $commandId)
+    public function __construct($type, $token, $commandId, $pumpingTable)
     {
         parent::__construct($type, $token);
         $this->commandId = $commandId;
+        $this->pumpingTable = $pumpingTable;
     }
 
     public function getCommandId()
@@ -125,6 +133,8 @@ class SendInfoRequest extends BasicRequest
         $len = strlen($data);
         $commandId = null;
         $token = null;
+        $pumpingTable = null;
+        $res = null;
 
         $mailformed = false;
         if ($len > $offset + 4) {
@@ -135,17 +145,27 @@ class SendInfoRequest extends BasicRequest
 
         $offset += 4;
 
-        if (!$mailformed && $len >= $offset + 1 && ($len - $offset) < BasicRequest::$MAX_TOKEN_SIZE) {
-            $token = substr($data, $offset, $len - $offset);
+        if (!$mailformed ) {
+            $pumpingTable = PumpingTable::deserialize(substr($data, $offset, $len - $offset));
+            $mailformed = $pumpingTable == null;
 
-        } else {
-
-            $mailformed = true;
         };
 
-        $res = null;
+        if (!$mailformed)
+        {
+           $offset += $pumpingTable->packedSize();
+           if ($len >= $offset + 1 &&  ($len - $offset) < BasicRequest::$MAX_TOKEN_SIZE)
+           {
+               $token = substr($data, $offset, $len - $offset);
+           } else {
+
+               $mailformed = true;
+           }
+
+        };
+
         if (!$mailformed) {
-            $res = new  SendInfoRequest($type, $token, $commandId);
+            $res = new  SendInfoRequest($type, $token, $commandId, $pumpingTable);
 
         };
 
@@ -156,7 +176,7 @@ class SendInfoRequest extends BasicRequest
 }
 
 /**
- * Class SendMonitoringInfoRequest
+ * Class SendBreefInfoRequest
  * Returns breef monitoring info from controller
  * Format:
  *  struct SendMonitoringInfoRequest
@@ -166,11 +186,11 @@ class SendInfoRequest extends BasicRequest
  *    bool is_working;         //is controller working
  *    uint8_t currentValve;    //current valve opened
  *    uint8_t currentStep;     //current step
- *    char token[];        //tokenSize
+ *    char token[];        //token
  * }
  *
  */
-class SendMonitoringInfoRequest extends BasicRequest
+class SendBreefInfoRequest extends BasicRequest
 {
     public $monitoringInfo = null;
 
@@ -211,7 +231,7 @@ class SendMonitoringInfoRequest extends BasicRequest
 
         $res = null;
         if (!$mailformed) {
-            $res = new  SendMonitoringInfoRequest($type, $monitoring_info, $token);
+            $res = new  SendBreefInfoRequest($type, $monitoring_info, $token);
 
         };
 
@@ -283,8 +303,8 @@ function pumpProtocolMessageFromBytes($data)
                 $res = SendInfoRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
                 break;
 
-            case PumpMessageConsts::$COMMAND_CHECK_WITH_INFO_REQUEST:
-                $res = SendMonitoringInfoRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
+            case PumpMessageConsts::$COMMAND_CHECK_WITH_BRIEF_INFO_REQUEST:
+                $res = SendBreefInfoRequest::deserialize($messageType, substr($data, $offset, $len - $offset));
                 break;
 
 

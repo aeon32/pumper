@@ -170,7 +170,7 @@ class ControlServer
 
         if (count($this->url_parameters) && empty($this->url_parameters[0])) {
             unset($this->url_parameters[0]);
-            $this->url_parameters = &array_values($this->url_parameters);
+            $this->url_parameters = array_values($this->url_parameters);
         };
 
         if (count($this->url_parameters) > 1) {  //по идее, в этом случае мы имеем дело с иерархическими ссылками
