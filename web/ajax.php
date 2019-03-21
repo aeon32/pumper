@@ -78,10 +78,11 @@ function getControllerInfo($database, $options, $controller_id)
     $out = ob_get_contents();
     ob_end_clean();
 
-    if (is_object($command_result) && $command_result->online)
+    if (is_object($command_result))
     {
         print('<?xml version="1.0"  encoding="utf-8"?>');
         print('<controller_info>');
+        print(htmlspecialchars(json_encode($command_result)));
         print('</controller_info>');
 
     } else {

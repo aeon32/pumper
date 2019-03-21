@@ -135,6 +135,16 @@ class com_controller_edit extends AbstractComponent
             </div>
             <div id="error_message">Ошибка обновления информации</div>
 
+            <table id="pumping_table" class="list_table" width="100%">
+                <tbody>
+                <tr>
+                    <th class="td_small">Номер шага</th>
+                    <th class="td_small">Номер клапана</th>
+                    <th class="td_small">Время продувки</th>
+                </tr>
+                </tbody>
+            </table>
+
             <form name="admin_table" id="admin_table" method="post" action="">
                 <input type="hidden" id="basename" value="<?php print($this->site->getBaseName()); ?>"/>
                 <input type="hidden" id="controller_id" value="<?php print(is_object($this->controller) ? $this->controller->id : "null")?>" />

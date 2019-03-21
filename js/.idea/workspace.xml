@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4321a85-af03-439c-a469-49f2acaf1d48" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../db/dump" beforeDir="false" afterPath="$PROJECT_DIR$/../db/dump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css" beforeDir="false" afterPath="$PROJECT_DIR$/css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images" beforeDir="false" afterPath="$PROJECT_DIR$/images" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js" beforeDir="false" afterPath="$PROJECT_DIR$/js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_controller_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/com_controller_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controller_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/framework/pumpcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/framework/pumpcommandengine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/js/com_controller_edit.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,8 +27,8 @@
       <file leaf-file-name="com_controllers.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com_controllers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
+            <state relative-caret-position="406">
+              <caret line="84" selection-start-line="49" selection-end-line="84" />
             </state>
           </provider>
         </entry>
@@ -32,26 +36,35 @@
       <file leaf-file-name="com_controller_edit.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com_controller_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+            <state relative-caret-position="391">
+              <caret line="54" column="21" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="54" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="com_controller_edit.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jquery-3.3.1.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-360">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="com_controller_edit.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+            <state relative-caret-position="316">
+              <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="com_controllers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="com_controllers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/com_controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1813">
-              <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
+            <state relative-caret-position="90">
+              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="71" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -69,11 +82,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/com_controller_edit.html" />
-        <option value="$PROJECT_DIR$/js/com_controller_edit.js" />
         <option value="$PROJECT_DIR$/css/new_main.css" />
         <option value="$PROJECT_DIR$/com_controllers.html" />
         <option value="$PROJECT_DIR$/js/com_controllers.js" />
+        <option value="$PROJECT_DIR$/com_controller_edit.html" />
+        <option value="$PROJECT_DIR$/js/com_controller_edit.js" />
       </list>
     </option>
   </component>
@@ -86,10 +99,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="241" />
-    <option name="y" value="852" />
-    <option name="width" value="1470" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1848" />
     <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -98,6 +109,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,7 +131,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,23 +152,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.com_controllers.html">
+  <component name="RunManager" selected="JavaScript Debug.com_controller_edit.html">
     <configuration name="com_controller_edit.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/js/com_controller_edit.html" />
+    <configuration name="com_controller_edit.html (2)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63344/js/com_controller_edit.html" />
     <configuration name="com_controller_edit.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/js/com_controller_edit.html" />
-    <configuration name="com_controllers.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/js/com_controllers.html" />
+    <configuration name="com_controllers.html (2)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63344/js/com_controllers.html" />
     <configuration name="com_controllers.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63343/js/com_controllers.html" />
     <list>
       <item itemvalue="JavaScript Debug.com_controllers.html" />
-      <item itemvalue="JavaScript Debug.com_controllers.html (1)" />
       <item itemvalue="JavaScript Debug.com_controller_edit.html" />
       <item itemvalue="JavaScript Debug.com_controller_edit.html (1)" />
+      <item itemvalue="JavaScript Debug.com_controllers.html (2)" />
+      <item itemvalue="JavaScript Debug.com_controller_edit.html (2)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.com_controller_edit.html" />
+        <item itemvalue="JavaScript Debug.com_controller_edit.html (2)" />
+        <item itemvalue="JavaScript Debug.com_controllers.html (2)" />
         <item itemvalue="JavaScript Debug.com_controllers.html" />
         <item itemvalue="JavaScript Debug.com_controller_edit.html (1)" />
-        <item itemvalue="JavaScript Debug.com_controller_edit.html" />
-        <item itemvalue="JavaScript Debug.com_controllers.html (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -179,26 +193,28 @@
       <workItem from="1540197325023" duration="1536000" />
       <workItem from="1541232977830" duration="6988000" />
       <workItem from="1552304961462" duration="1723000" />
+      <workItem from="1553007057721" duration="978000" />
+      <workItem from="1553160255356" duration="8268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52913000" />
+    <option name="totallyTimeSpent" value="62159000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="241" y="852" width="1470" height="1098" extended-state="0" />
+    <frame x="0" y="0" width="1848" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23050615" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18235931" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50068027" side_tool="true" visible="true" weight="0.47411168" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.33225107" side_tool="true" weight="0.47320527" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49931973" weight="0.4738255" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6677489" visible="true" weight="0.47320527" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -216,23 +232,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="99" />
+      <option name="time" value="104" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -268,19 +274,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -323,19 +319,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -364,23 +350,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13410">
@@ -416,16 +388,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13290">
@@ -433,9 +397,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
     <entry file="file://$PROJECT_DIR$/com_controllers.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -450,16 +412,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3540">
-          <caret line="236" column="52" lean-forward="true" selection-start-line="236" selection-start-column="52" selection-end-line="236" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2070">
@@ -474,16 +428,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
     <entry file="file://$PROJECT_DIR$/css/new_main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7740">
@@ -491,41 +436,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
+    <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
     <entry file="file://$PROJECT_DIR$/com_controllers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com_controller_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+        <state relative-caret-position="406">
+          <caret line="84" selection-start-line="49" selection-end-line="84" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/com_controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1813">
-          <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
+        <state relative-caret-position="90">
+          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="71" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com_controller_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="54" column="21" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="54" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
         </state>
       </provider>
     </entry>

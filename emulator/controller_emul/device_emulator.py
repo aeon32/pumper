@@ -20,7 +20,8 @@ class DeviceEmulator:
         self.currentValve = 20
         self.currentStep = 30
 
-        pumpTable = [ controller_emul.pump_protocol.PumpTableRow (1,5), controller_emul.pump_protocol.PumpTableRow (2,50) ]
+        pumpTable = [ controller_emul.pump_protocol.PumpTableRow (1,5), controller_emul.pump_protocol.PumpTableRow (2,50),
+                      controller_emul.pump_protocol.PumpTableRow (4,150) ]
         self.fullControllingInfo = controller_emul.pump_protocol.ControllerInfo(pumpTable)
 
     # handle parsed command, switch device states

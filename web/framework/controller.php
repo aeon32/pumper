@@ -11,6 +11,7 @@ class Controller
     public $last_session = NULL;
     public $online = FALSE;
     public $info_is_full;
+    public $monitoring_info;
 
 
     public function __construct($id, $name, $imei)

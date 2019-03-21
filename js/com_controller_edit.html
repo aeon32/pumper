@@ -45,12 +45,33 @@
                 <h1>Управление контроллером</h1>
             </div>
             <div id="error_message">Ошибка обновления информации</div>
+
+
+            <table id="pumping_table" class="list_table" width="100%">
+                <tbody><tr>
+                    <th class="td_small">Номер шага</th>
+                    <th class="td_small">Номер клапана</th>
+                    <th class="td_small">Время продувки</th>
+                </tr>
+
+                <tr>
+                    <td class="td_small">1</td>
+                    <td class="td_small">100</td>
+                    <td class="td_small">100</td>
+                </tr>
+                <tr class="polos_tr">
+                    <td class="td_small">2</td>
+                    <td class="td_small">50</td>
+                    <td class="td_small">200</td>
+
+                </tr>
+                </tbody></table>
+
             <form name="admin_table" id="admin_table" method="post" action="">
                 <input id="basename" value="http://localhost/pump/" type="hidden">
                 <input id="refresh_settings_button" value="Обновить" type="button">
-                 <input type="hidden" id="controller_id" value="1" />
+                <input type="hidden" id="controller_id" value="7" />
             </form>
-
             
         </div>
         

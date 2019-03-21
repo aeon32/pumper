@@ -135,6 +135,15 @@ class PumpCommandEngine extends  PumpCommandEngineBase
 
     }
 
+    /**
+     * @param $controller_id
+     * @param $command_type
+     * @param $timeout
+     * @return Command|int
+     *  Put command to command queue. Wait for result, return command instance or one of $
+     *  CONTROLLER_NOT_FOUND, CONTROLLER_IS_OFFLINE, .. constant
+     */
+
     public function pushCommandWaitResponse($controller_id, $command_type, $timeout)
     {
         $controller = $this->controllerManager->getController($controller_id);
@@ -172,7 +181,7 @@ class PumpCommandEngine extends  PumpCommandEngineBase
             return $this::$CONTROLLER_NOT_RESPONDS;
 
 
-        return $controller;
+        return $command;
 
 
     }
@@ -185,7 +194,35 @@ class PumpCommandEngine extends  PumpCommandEngineBase
     public function pushGetControllerInfoCommand($controller_id)
     {
 
-        return $this->pushCommandWaitResponse($controller_id, PumpMessageConsts::$GET_INFO_RESPONSE,  $this->options["command_timeout"]);
+        $command = $this->pushCommandWaitResponse($controller_id, PumpMessageConsts::$GET_INFO_RESPONSE,  $this->options["command_timeout"]);
+        if (is_object($command))
+        {
+            $pumping_table_query =
+                $this->dbdriver->exec
+                (
+                    "SELECT step_id, valve, time FROM $this->controller_pumping_table_rows 
+                     WHERE pumping_table_id IN (
+                      SELECT pumping_table_id FROM $this->command_send_info_result_table WHERE command_id= $command->id
+                     )
+                     ORDER BY step_id;"
+                );
+
+            $pumpingTable = array();
+            for ($i = 0; $i < $pumping_table_query->num_rows(); $i++)
+            {
+                $row = $pumping_table_query->getRow($i);
+                array_push($pumpingTable, new PumpingTableRow($row[1], $row[2]));
+            };
+
+            $pumpingTableObj = new PumpingTable($pumpingTable);
+            return (object) array ("pumping_table" => $pumpingTableObj->pumping_table);
+
+
+
+        } else
+        {
+            return $command;
+        }
     }
 
 
