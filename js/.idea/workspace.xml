@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4321a85-af03-439c-a469-49f2acaf1d48" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../db/dump" beforeDir="false" afterPath="$PROJECT_DIR$/../db/dump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com_controller_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/com_controller_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controller_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_controllers.html" beforeDir="false" afterPath="$PROJECT_DIR$/com_controllers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/framework/pumpcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/framework/pumpcommandengine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/js/com_controller_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/components/com_controller_edit/com_controller_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/components/com_controller_edit/com_controller_edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/components/com_controllers/com_controllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/../web/components/com_controllers/com_controllers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/css/new_main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../web/css/new_main.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,8 +25,20 @@
       <file leaf-file-name="com_controllers.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com_controllers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="84" selection-start-line="49" selection-end-line="84" />
+            <state relative-caret-position="331">
+              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/new_main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7740">
+              <caret line="516" selection-start-line="516" selection-end-line="516" />
             </state>
           </provider>
         </entry>
@@ -36,8 +46,8 @@
       <file leaf-file-name="com_controller_edit.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com_controller_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="54" column="21" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="54" selection-end-column="21" />
+            <state relative-caret-position="271">
+              <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -54,8 +64,8 @@
       <file leaf-file-name="com_controller_edit.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
+            <state relative-caret-position="630">
+              <caret line="144" column="32" lean-forward="true" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -83,9 +93,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/css/new_main.css" />
-        <option value="$PROJECT_DIR$/com_controllers.html" />
         <option value="$PROJECT_DIR$/js/com_controllers.js" />
         <option value="$PROJECT_DIR$/com_controller_edit.html" />
+        <option value="$PROJECT_DIR$/com_controllers.html" />
         <option value="$PROJECT_DIR$/js/com_controller_edit.js" />
       </list>
     </option>
@@ -99,9 +109,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1848" />
-    <option name="height" value="1098" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="150" />
+    <option name="y" value="136" />
+    <option name="width" value="1460" />
+    <option name="height" value="1225" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -194,27 +206,27 @@
       <workItem from="1541232977830" duration="6988000" />
       <workItem from="1552304961462" duration="1723000" />
       <workItem from="1553007057721" duration="978000" />
-      <workItem from="1553160255356" duration="8268000" />
+      <workItem from="1553160255356" duration="11677000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62159000" />
+    <option name="totallyTimeSpent" value="65568000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1848" height="1098" extended-state="6" />
+    <frame x="150" y="136" width="1460" height="1225" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18235931" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23082192" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.33225107" side_tool="true" weight="0.47320527" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3321918" side_tool="true" visible="true" weight="0.41935483" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6677489" visible="true" weight="0.47320527" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.66780823" weight="0.41935483" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -429,19 +441,12 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/point_editor.js" />
-    <entry file="file://$PROJECT_DIR$/css/new_main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7740">
-          <caret line="516" selection-start-line="516" selection-end-line="516" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_points.js" />
     <entry file="file://$USER_HOME$/constellation_projects/wifi/wifi/js/com_scheme_edit.js" />
-    <entry file="file://$PROJECT_DIR$/com_controllers.html">
+    <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="84" selection-start-line="49" selection-end-line="84" />
+        <state relative-caret-position="-360">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -452,24 +457,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com_controller_edit.html">
+    <entry file="file://$PROJECT_DIR$/css/new_main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="54" column="21" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="54" selection-end-column="21" />
+        <state relative-caret-position="7740">
+          <caret line="516" selection-start-line="516" selection-end-line="516" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery-3.3.1.js">
+    <entry file="file://$PROJECT_DIR$/com_controllers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="331">
+          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com_controller_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/com_controller_edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
+        <state relative-caret-position="630">
+          <caret line="144" column="32" lean-forward="true" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
         </state>
       </provider>
     </entry>

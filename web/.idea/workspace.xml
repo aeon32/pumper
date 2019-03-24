@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13a152ea-c90e-4004-883c-1b94149508ec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../db/dump" beforeDir="false" afterPath="$PROJECT_DIR$/../db/dump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../emulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../js/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../js/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../js/com_controller_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../js/com_controller_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js/com_controllers.html" beforeDir="false" afterPath="$PROJECT_DIR$/../js/com_controllers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/pumpcommandengine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/pumpcommandengine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/com_controller_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/com_controller_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/com_controllers/com_controllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/com_controllers/com_controllers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/new_main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/new_main.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +31,32 @@
       <file leaf-file-name="com_controller_edit.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+            <state relative-caret-position="119">
+              <caret line="94" column="56" lean-forward="true" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="com_controllers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/com_controllers/com_controllers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/new_main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="545" lean-forward="true" selection-start-line="545" selection-end-line="545" />
             </state>
           </provider>
         </entry>
@@ -52,17 +73,8 @@
       <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/framework/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="-4800">
               <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pumpprotocol.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework/pumpprotocol.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4590">
-              <caret line="306" column="29" selection-start-line="306" selection-start-column="29" selection-end-line="306" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -81,15 +93,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
               <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pumpingtable.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework/pumpingtable.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="86" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
         </entry>
@@ -148,7 +151,6 @@
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/components/com_login/com_login.php" />
         <option value="$PROJECT_DIR$/components/com_main/com_main.php" />
-        <option value="$PROJECT_DIR$/css/new_main.css" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/site.php" />
         <option value="$PROJECT_DIR$/components/controller_editor/controller_editor.php" />
@@ -161,13 +163,14 @@
         <option value="$PROJECT_DIR$/framework/user.php" />
         <option value="$PROJECT_DIR$/framework/monitoringinfo.php" />
         <option value="$PROJECT_DIR$/framework/controllersession.php" />
-        <option value="$PROJECT_DIR$/components/com_controllers/com_controllers.php" />
         <option value="$PROJECT_DIR$/framework/pumpingtable.php" />
         <option value="$PROJECT_DIR$/controlserver.php" />
         <option value="$PROJECT_DIR$/framework/pumpprotocol.php" />
         <option value="$PROJECT_DIR$/ajax.php" />
         <option value="$PROJECT_DIR$/framework/controller.php" />
         <option value="$PROJECT_DIR$/framework/pumpcommandengine.php" />
+        <option value="$PROJECT_DIR$/components/com_controllers/com_controllers.php" />
+        <option value="$PROJECT_DIR$/css/new_main.css" />
         <option value="$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php" />
       </list>
     </option>
@@ -192,11 +195,11 @@
     </servers>
   </component>
   <component name="PhpWebServerValidation" deployment_server_id="565e5495-7304-42f9-b33f-0c0453aa6f98" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="REMOTE" web_path_to_validation_script="http://127.0.0.1/" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="444" />
-    <option name="y" value="191" />
-    <option name="width" value="1224" />
-    <option name="height" value="627" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-46" />
+    <option name="y" value="82" />
+    <option name="width" value="1635" />
+    <option name="height" value="1016" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -379,21 +382,21 @@
       <workItem from="1552568212279" duration="601000" />
       <workItem from="1552985373513" duration="15993000" />
       <workItem from="1553081817396" duration="1205000" />
-      <workItem from="1553160160402" duration="6201000" />
+      <workItem from="1553160160402" duration="9408000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224090000" />
+    <option name="totallyTimeSpent" value="227297000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1856" height="1102" extended-state="6" />
+    <frame x="-46" y="82" width="1635" height="1016" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16017316" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18192993" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.12391775" side_tool="true" visible="true" weight="0.3751264" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.12415489" side_tool="true" visible="true" weight="0.4108527" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -401,7 +404,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49837664" weight="0.32861477" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.87608224" visible="true" weight="0.3751264" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.87584513" visible="true" weight="0.4108527" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -485,13 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/new_main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8010">
-          <caret line="534" selection-start-line="534" selection-end-line="534" />
         </state>
       </provider>
     </entry>
@@ -590,13 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/com_controllers/com_controllers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1725">
-          <caret line="115" column="14" selection-start-line="115" selection-start-column="14" selection-end-line="115" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/framework/abstractdb.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -646,24 +635,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/framework/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -681,10 +656,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/new_main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="545" lean-forward="true" selection-start-line="545" selection-end-line="545" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/com_controllers/com_controllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4800">
+          <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/com_controller_edit/com_controller_edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+        <state relative-caret-position="119">
+          <caret line="94" column="56" lean-forward="true" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

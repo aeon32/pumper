@@ -71,7 +71,7 @@ function ControllerEdit(timeout) {
     this.updateTable = function (fullInfo)
     {
         var rowCount = this.pumping_table_body.rows.length - 1;
-        var pumpingTableData = fullInfo.pumping_table;
+        var pumpingTableData = fullInfo ? fullInfo.pumping_table : [];
 
         var expectedRowCount = pumpingTableData.length;
 
@@ -121,6 +121,7 @@ function ControllerEdit(timeout) {
         {
             this.error_message.text(error);
             this.error_message.show();
+            controllerEditor.updateTable(null);
 
         }
 
@@ -137,7 +138,7 @@ function ControllerEdit(timeout) {
 
     this.updateInfoRequest = function () {
         var controllerEditor = this;
-        controllerEditor.error_message.hide();
+        //controllerEditor.error_message.hide();
         $.get({
                 url: this.ajaxUrl,
                 data: {request: "get_controller_info", controller_id: controllerEditor.controllerId},
