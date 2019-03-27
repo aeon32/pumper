@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
 --
 -- Host: localhost    Database: pump
 -- ------------------------------------------------------
--- Server version	5.7.24-0ubuntu0.18.04.1
+-- Server version	5.7.23-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `pump_controller` (
 
 LOCK TABLES `pump_controller` WRITE;
 /*!40000 ALTER TABLE `pump_controller` DISABLE KEYS */;
-INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-24 13:02:50','abcd',3,20);
+INSERT INTO `pump_controller` VALUES (1,'Контроллер 1','2018-10-24 13:02:50','abcd',3,20),(7,'862118025301703','2019-03-21 13:53:26','862118025301703',7,280);
 /*!40000 ALTER TABLE `pump_controller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +135,7 @@ CREATE TABLE `pump_controller_monitoring_info` (
   `current_valve` smallint(6) DEFAULT NULL COMMENT 'Текущий клапан',
   `current_step` smallint(6) DEFAULT NULL COMMENT 'Номер прохода',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,6 @@ CREATE TABLE `pump_controller_monitoring_info` (
 
 LOCK TABLES `pump_controller_monitoring_info` WRITE;
 /*!40000 ALTER TABLE `pump_controller_monitoring_info` DISABLE KEYS */;
-INSERT INTO `pump_controller_monitoring_info` VALUES (1,1,'2018-11-05 08:11:38.483',10,1,20,30),(2,1,'2018-11-05 08:11:39.490',10,1,20,30),(3,1,'2018-11-05 08:11:40.499',10,1,20,30),(4,1,'2018-11-05 08:11:41.505',10,1,20,30),(5,1,'2018-11-05 08:11:42.514',10,1,20,30);
 /*!40000 ALTER TABLE `pump_controller_monitoring_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +209,7 @@ CREATE TABLE `pump_controller_session` (
   PRIMARY KEY (`id`),
   KEY `idx_pump_controller_session_controller_id` (`controller_id`),
   KEY `idx_pump_controller_session_lasttime` (`lasttime`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +218,6 @@ CREATE TABLE `pump_controller_session` (
 
 LOCK TABLES `pump_controller_session` WRITE;
 /*!40000 ALTER TABLE `pump_controller_session` DISABLE KEYS */;
-INSERT INTO `pump_controller_session` VALUES (1,'1','abcd','2018-11-05 08:11:37.469','2018-11-05 08:11:42.511');
 /*!40000 ALTER TABLE `pump_controller_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +265,7 @@ CREATE TABLE `pump_user` (
 
 LOCK TABLES `pump_user` WRITE;
 /*!40000 ALTER TABLE `pump_user` DISABLE KEYS */;
-INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2018-10-24 13:19:46.853');
+INSERT INTO `pump_user` VALUES (0,'admin','f6fdffe48c908deb0f4c3bd36c032e72','2019-03-21 14:56:12.869');
 /*!40000 ALTER TABLE `pump_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,4 +300,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-24 16:19:53
+-- Dump completed on 2019-03-27 18:15:47
