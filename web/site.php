@@ -29,6 +29,7 @@ class CSite
     private $controllers_manager = NULL;
     private $installMode = false;
     private $contentname = NULL;
+    private $protocol;
 
     public $ierar_link = false;          //использовалась иерархическая ссылка при заходе на сайт
 
@@ -96,6 +97,18 @@ class CSite
     public function __construct($prefix)
     {
         $this->prefix = $prefix;
+        if (isset($_SERVER['HTTPS']) &&
+            ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+            isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+            $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+        {
+            $this->protocol = 'https://';
+        }
+        else {
+            $this->protocol = 'http://';
+        }
+
+
         $this->options = (array)(new CConfig);   //получили массив свойств
         if ($this->options["debug"])
         {
@@ -255,13 +268,14 @@ class CSite
             $this->user->tryToAuthorize();
         };
 
-        if ($this->user->getAuthorizeStatus() != CUser::AUTHORIZED) {
+        if ($this->user->getAuthorizeStatus() != CUser::AUTHORIZED)
+        {
             if ($this->contentname != "com_login") {
                 $this->contentname = "com_login";
                 $this->redirect = true;
                 $host = $_SERVER['HTTP_HOST'];
                 $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                header("Location: http://$host$uri/login/");
+                header("Location: $this->protocol$host$uri/login/");
 
             };
 
@@ -356,7 +370,7 @@ class CSite
      */
     public function getBaseName()
     {
-        $base = "http://" . $_SERVER['HTTP_HOST'];
+        $base = $this->protocol. $_SERVER['HTTP_HOST'];
         if ($_SERVER['SERVER_PORT'] != 80) $base .= ":{$_SERVER['SERVER_PORT']}";
         $base .= dirname($_SERVER['SCRIPT_NAME']);
         $base = trim($base, '.\\/') . '/';
